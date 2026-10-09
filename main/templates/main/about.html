@@ -1,0 +1,427 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/about.css' %}">
+<style>
+.about-hero { position: relative; overflow: hidden; background: #0b1530; }
+
+.hero-slides { position: absolute; inset: 0; z-index: 0; }
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: heroFade 20s infinite;   /* 4 slides x 5s */
+}
+.hero-slide:nth-child(1) { animation-delay: 0s;  }
+.hero-slide:nth-child(2) { animation-delay: 5s;  }
+.hero-slide:nth-child(3) { animation-delay: 10s; }
+.hero-slide:nth-child(4) { animation-delay: 15s; }
+
+@keyframes heroFade {
+    0%   { opacity: 0; }
+    5%   { opacity: 1; }
+    25%  { opacity: 1; }
+    30%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.about-hero .overlay { position: absolute; inset: 0; z-index: 1; }
+.about-hero .text-box { position: relative; z-index: 2; }
+.about-hero .particle,
+.about-hero .scroll-cue { z-index: 2; }
+
+/* hero text eppavum theriya */
+.about-hero .fade-in,
+.about-hero .slide-up { opacity: 1; transform: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="about-hero">
+
+    <div class="hero-slides">
+        <div class="hero-slide" style="background-image:url('{% static 'main/images/cloud.webp' %}');"></div>
+        <div class="hero-slide" style="background-image:url('{% static 'main/images/digital.webp' %}');"></div>
+        <div class="hero-slide" style="background-image:url('{% static 'main/images/cloud.webp' %}');"></div>
+        <div class="hero-slide" style="background-image:url('{% static 'main/images/digital.webp' %}');"></div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="particle" style="left:12%; top:60%; --dur:7s; --del:0s;"></div>
+    <div class="particle" style="left:28%; top:75%; --dur:5s; --del:1s;"></div>
+    <div class="particle" style="left:55%; top:80%; --dur:8s; --del:2s;"></div>
+    <div class="particle" style="left:72%; top:65%; --dur:6s; --del:0.5s;"></div>
+    <div class="particle" style="left:88%; top:70%; --dur:9s; --del:1.5s;"></div>
+
+    <div class="text-box">
+        <h1 class="fade-in">About CSC <span>Anna Nagar</span> Institute</h1>
+        <p class="slide-up"><strong>Empowering Learners Through Technology</strong></p>
+    </div>
+
+    <div class="scroll-cue">
+        <span>Scroll</span>
+        <div class="arrow"></div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     WHO WE ARE
+     ================================================================ -->
+<section class="about-section fade-up">
+    <div class="section-inner">
+
+        <!-- Text -->
+        <div class="section-text">
+            <div class="section-badge">🏫 About Us</div>
+            <h2>Who We Are</h2>
+           
+            <p>
+                <strong>CSC</strong> is a student-focused computer education insitution that prioritizies practical technology skill development practical 
+                techonology skill development.
+            </p>
+            <p style="margin-top:1rem;">
+               Technical education is onsmistr by <strong>Identailing, Practical, Education, and Technical education </strong> Practical learning,
+               skill development, and career preparation.
+
+            </p>
+            <p>
+                <strong>CSC</strong> has sencerhanted computer techniques, are practical education, technical tearing, skill development and career preparation.
+            </p>
+        </div>
+        
+       
+        <!-- Visual -->
+        <div class="section-visual">
+            <div class="about-visual-box">
+                <div class="visual-card">
+                    <span class="vc-icon">🎓</span>
+                    <h3>Trusted by 1000+ Students</h3>
+                    <p>
+                        From beginners to professionals — we have trained over a thousand students
+                        across IT, software, and digital skill courses since our establishment.
+                    </p>
+                </div>
+                <div class="visual-gold-accent">
+                    <span class="num">1000+</span>
+                    Students Trained
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- ============================== OUR APPROACH ======================= -->
+ <section>
+    <class="approach-section">
+        <h1 class="section-title">Our Approach</h1>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-num">01</span>
+                    <span class="line"></span>
+                    <span class="step-icon">📖</span>
+                </div>
+                <h3 class="step-title">Learn</h3>
+                <p class="step-desc">Build strong technical fundamentals </p>
+            </div>
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-num">02</span>
+                    <span class="line"></span>
+                    <span class="step-icon">📑</span>
+                </div>
+                <h3 class="step-title">Practice</h3>
+                <p class="step-desc">Apply concepts through practical learning </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-num">03</span>
+                    <span class="line"></span>
+                    <span class="step-icon">💻</span>
+                </div>
+                <h3 class="step-title">Build</h3>
+                <p class="step-desc">Create projects and develop real-world confidence</p>
+            </div>
+            <div class="step-card">
+                <div class="step-header">
+                    <span class="step-num">04</span>
+                    <span class="line"></span>
+                    <span class="step-icon">📈</span>
+                </div>
+                <h3 class="step-title">Grow</h3>
+                <p class="step-desc">Prepare for professional opportunities</p>
+            </div>
+
+        </div>    </class>
+        </section>
+    
+ 
+    <!-- ================================================================ -->
+<div class="about-stats fade-up">
+    <div class="stats-row">
+        <div class="stat-item">
+            <span class="stat-num" data-target="1000" data-suffix="+">0+</span>
+            <span class="stat-label">Successful Students</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num" data-target="100" data-suffix="+">0+</span>
+            <span class="stat-label">Certifications</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num" data-target="15" data-suffix="+">0+</span>
+            <span class="stat-label">Courses Offered</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+            <span class="stat-num" data-target="98" data-suffix="%">0%</span>
+            <span class="stat-label">Satisfaction Rate</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     MISSION
+     ================================================================ -->
+<section class="mission-section fade-up">
+    <div class="section-inner reverse">
+
+        <!-- Mission points -->
+        <div class="section-visual">
+            <div class="mission-points">
+                <div class="mission-point">
+                    <span class="mp-icon">🎯</span>
+                    <div class="mp-text">
+                        <h4>Quality Education</h4>
+                        <p>High-quality, affordable, and practical training tailored for real industry needs.</p>
+                    </div>
+                </div>
+                <div class="mission-point">
+                    <span class="mp-icon">💡</span>
+                    <div class="mp-text">
+                        <h4>Skill Development</h4>
+                        <p>We focus on building the exact skills employers are looking for today.</p>
+                    </div>
+                </div>
+                <div class="mission-point">
+                    <span class="mp-icon">🚀</span>
+                    <div class="mp-text">
+                        <h4>Career Guidance</h4>
+                        <p>Continuous support from learning to placement — we walk with every student.</p>
+                    </div>
+                </div>
+                <div class="mission-point">
+                    <span class="mp-icon">🤝</span>
+                    <div class="mp-text">
+                        <h4>Community & Support</h4>
+                        <p>A strong alumni network and mentor community that lasts beyond the course.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text -->
+        <div class="section-text">
+            <div class="section-badge">🎯 Mission</div>
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to provide high-quality, affordable, and practical training that
+                transforms students into industry-ready professionals.
+            </p>
+            <p style="margin-top:1rem;">
+                We believe in <strong>skill development, career guidance,</strong> and continuous
+                improvement to unlock student potential and drive long-term success in every
+                student's IT journey.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     WHY CHOOSE US — FEATURE CARDS
+     ================================================================ -->
+<section class="features-grid fade-up">
+    <div class="section-header">
+        <h2>Why Choose CSC Anna Nagar?</h2>
+        <p>Everything you need to launch and accelerate your IT career — all in one place.</p>
+        <div class="section-line"></div>
+    </div>
+
+    <div class="grid">
+
+        <div class="card pop">
+            <div class="card-icon-wrap">
+                <img src="{% static 'main/images/cloud.webp' %}" alt="Trainer"
+                     onerror="this.parentElement.innerHTML='<span class=\'card-emoji\'>👨‍🏫</span>'">
+            </div>
+            <h3>Expert Trainers</h3>
+            <p>Learn from industry professionals with real-time experience and proven track records.</p>
+        </div>
+
+        <div class="card pop">
+            <div class="card-icon-wrap">
+                <img src="{% static 'main/images/digital.webp' %}" alt="Project"
+                     onerror="this.parentElement.innerHTML='<span class=\'card-emoji\'>💻</span>'">
+            </div>
+            <h3>Live Projects</h3>
+            <p>Gain strong hands-on experience with live and practical real-world projects.</p>
+        </div>
+
+        <div class="card pop">
+            <div class="card-icon-wrap">
+                <img src="{% static 'main/images/cloud.webp' %}" alt="Support"
+                     onerror="this.parentElement.innerHTML='<span class=\'card-emoji\'>🏆</span>'">
+            </div>
+            <h3>Career Support</h3>
+            <p>Resume building, mock interviews, and full placement assistance included.</p>
+        </div>
+
+        <div class="card pop">
+            <div class="card-icon-wrap">
+                <img src="{% static 'main/images/digital.webp' %}" alt="Class"
+                     onerror="this.parentElement.innerHTML='<span class=\'card-emoji\'>🕐</span>'">
+            </div>
+            <h3>Flexible Batches</h3>
+            <p>Morning, evening, and weekend batches designed around your schedule.</p>
+        </div>
+
+        <div class="card pop">
+            <div class="card-icon-wrap">
+                <span class="card-emoji">📜</span>
+            </div>
+            <h3>Certification</h3>
+            <p>Receive recognised certificates on course completion to boost your resume.</p>
+        </div>
+
+        <div class="card pop">
+            <div class="card-icon-wrap">
+                <span class="card-emoji">🌐</span>
+            </div>
+            <h3>Online & Offline</h3>
+            <p>Attend classes from home or in-person — we support both learning modes.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     CALL TO ACTION
+     ================================================================ -->
+<section class="call-action fade-up">
+    <div class="cta-inner">
+        <div class="cta-badge">🚀 Take the Next Step</div>
+        <h2>Join CSC Anna Nagar Institute <span>Today</span></h2>
+        <p>
+            Take your first step toward a successful IT career with professional guidance,
+            expert training, and a community that supports you every step of the way.
+        </p>
+        <div class="cta-buttons">
+            <a href="{% url 'contact' %}" class="cta-btn">📞 Contact Us</a>
+            <a href="{% url 'home' %}" class="cta-btn-outline">🏠 Back to Home</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     SCROLL REVEAL + COUNTER SCRIPT
+     ================================================================ -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* ── Scroll Reveal ─────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.fade-up, .pop');
+    const revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, i) {
+            if (entry.isIntersecting) {
+                setTimeout(function () {
+                    entry.target.classList.add('visible');
+                }, entry.target.classList.contains('pop') ? i * 100 : 0);
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(function (el) { revealObs.observe(el); });
+
+    /* ── Counter Animation ─────────────────────────────────── */
+    function animateNum(el) {
+        var target  = parseInt(el.getAttribute('data-target'), 10);
+        var suffix  = el.getAttribute('data-suffix') || '';
+        var dur     = 1800;
+        var step    = 16;
+        var inc     = target / (dur / step);
+        var current = 0;
+        var timer   = setInterval(function () {
+            current += inc;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            el.textContent = Math.floor(current).toLocaleString() + suffix;
+        }, step);
+    }
+
+    var counterObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                animateNum(entry.target);
+                counterObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-num[data-target]').forEach(function (el) {
+        counterObs.observe(el);
+    });
+
+        /* ── Hero Carousel ─────────────────────────────────────── */
+    (function () {
+        var slides  = document.querySelectorAll('.hero-slide');
+        var dotsBox = document.querySelector('.hero-dots');
+        if (!slides.length || !dotsBox) return;
+
+        var index = 0, timer = null, DELAY = 4500;
+
+        slides.forEach(function (_, i) {
+            var d = document.createElement('button');
+            d.type = 'button';
+            d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            d.addEventListener('click', function () { goTo(i); restart(); });
+            dotsBox.appendChild(d);
+        });
+        var dots = dotsBox.querySelectorAll('button');
+
+        function goTo(i) {
+            slides[index].classList.remove('active');
+            index = (i + slides.length) % slides.length;
+            slides[index].classList.add('active');
+            dots.forEach(function (d, k) { d.classList.toggle('active', k === index); });
+        }
+
+        function start()   { timer = setInterval(function () { goTo(index + 1); }, DELAY); }
+        function restart() { clearInterval(timer); start(); }
+
+        goTo(0);
+        start();
+    })();
+
+});
+</script>
+
+{% endblock %}

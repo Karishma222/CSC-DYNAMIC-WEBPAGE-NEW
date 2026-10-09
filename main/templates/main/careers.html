@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="career-section container mt-5">
+    <h2 class="text-center mb-5">Join Our Team</h2>
+
+    {% if careers %}
+    <div class="row">
+        {% for career in careers %}
+        <div class="col-md-4 mb-4">
+            <div class="career-card shadow-lg">
+
+                {% if career.image %}
+                <img src="{{ career.image.url }}" alt="{{ career.role }}">
+                {% else %}
+                <img src="{% static 'main/images/no-image.png' %}" alt="No Image">
+                {% endif %}
+
+                <div class="career-content">
+                    <h4>{{ career.role }}</h4>
+
+                    <span class="badge bg-primary">
+                        {{ career.employment_type }}
+                    </span>
+
+                    <p class="mt-2">
+                        {{ career.job_description|truncatewords:20 }}
+                    </p>
+
+                    {% if career.salary %}
+                    <p class="salary">
+                        💰 {{ career.salary }}
+                    </p>
+                    {% endif %}
+
+                    <button class="apply-btn">Apply Now</button>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+        <div class="text-center no-openings">
+            <h4>🚀 Right Now No Openings</h4>
+            <p>Please check back later for new opportunities.</p>
+        </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}

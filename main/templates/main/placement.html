@@ -1,0 +1,201 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}CSC - Placement Support{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/Placement.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="placement-page">
+
+  <!-- HERO -->
+  <section class="pl-hero">
+    <div class="pl-container pl-hero-grid">
+      <div class="pl-hero-text">
+        <span class="pl-tag">LEARN · PRACTICE · GROW</span>
+        <h1>Placement Support at CSC</h1>
+        <p>From your first class to your first job – we train, guide and connect you with companies so you step into the IT industry with confidence.</p>
+        <a href="#enquiry" class="pl-btn">Get Placement Guidance →</a>
+      </div>
+      <div class="pl-hero-art">
+        <img src="{% static 'main/images/python.webp' %}" alt="Python Full Stack training at CSC">
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="pl-stats">
+    <div class="pl-container pl-stats-grid">
+      <div><b data-count="500" data-suffix="+">0</b><span>Students Placed</span></div>
+      <div><b data-count="50" data-suffix="+">0</b><span>Hiring Partners</span></div>
+      <div><b data-count="100" data-suffix="%">0</b><span>Placement Assistance</span></div>
+      <div><b data-count="10" data-suffix="+">0</b><span>Mock Interviews per Student</span></div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="pl-section">
+    <div class="pl-container">
+      <h2>How We Support Your Career</h2>
+      <p class="pl-sub">Everything you need to get job-ready, under one roof.</p>
+      <div class="pl-grid">
+        <div class="pl-card"><div class="pl-ic">📄</div><h3>Resume Building</h3><p>ATS-friendly resume, LinkedIn and GitHub profile setup.</p></div>
+        <div class="pl-card"><div class="pl-ic">🎤</div><h3>Mock Interviews</h3><p>Technical and HR rounds with feedback from trainers.</p></div>
+        <div class="pl-card"><div class="pl-ic">🧠</div><h3>Aptitude Training</h3><p>Logical reasoning, quantitative and verbal practice.</p></div>
+        <div class="pl-card"><div class="pl-ic">💬</div><h3>Soft Skills</h3><p>Communication, group discussion and confidence building.</p></div>
+        <div class="pl-card"><div class="pl-ic">💻</div><h3>Coding Practice</h3><p>Python, SQL and problem-solving for interview rounds.</p></div>
+        <div class="pl-card"><div class="pl-ic">🛠️</div><h3>Real-Time Projects</h3><p>Portfolio-ready full stack projects to show employers.</p></div>
+        <div class="pl-card"><div class="pl-ic">🤝</div><h3>Job Referrals</h3><p>Direct referrals to our hiring partner companies.</p></div>
+        <div class="pl-card"><div class="pl-ic">🏢</div><h3>Campus Drives</h3><p>Placement drives and walk-in interview alerts.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="pl-section pl-alt" id="placement-process">
+    <div class="pl-container">
+      <h2>Your Placement Journey</h2>
+      <p class="pl-sub">Five simple steps from enrollment to offer letter.</p>
+      <div class="pl-steps">
+        <div class="pl-step"><h4>Learn</h4><p>Complete Python Full Stack training.</p></div>
+        <div class="pl-step"><h4>Build</h4><p>Create projects and a strong portfolio.</p></div>
+        <div class="pl-step"><h4>Prepare</h4><p>Aptitude, mock interviews, resume.</p></div>
+        <div class="pl-step"><h4>Apply</h4><p>Referrals and interview scheduling.</p></div>
+        <div class="pl-step"><h4>Get Hired</h4><p>Offer letter and career growth support.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED COURSE -->
+  <section class="pl-band">
+    <div class="pl-container pl-band-grid">
+      <div>
+        <span class="pl-badge">FEATURED</span>
+        <h2>Python Full Stack Development</h2>
+        <p>Placement-focused course covering Python, Django, HTML/CSS/JS, databases and deployment, with interview preparation built in.</p>
+        <a href="/courses/" class="pl-link">View Course ›</a>
+      </div>
+      <div class="pl-roles">
+        <span>Python Developer</span><span>Full Stack Developer</span><span>Web Developer</span>
+        <span>Backend Developer</span><span>Software Trainee</span><span>QA / Support Engineer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="pl-section">
+    <div class="pl-container">
+      <h2>Our Hiring Partners</h2>
+      <p class="pl-sub">Companies where CSC students build their careers.</p>
+      <div class="pl-partners">
+        <div>Company 1</div><div>Company 2</div><div>Company 3</div>
+        <div>Company 4</div><div>Company 5</div><div>Company 6</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORIES -->
+  <section class="pl-section pl-alt">
+    <div class="pl-container">
+      <h2>Student Success Stories</h2>
+      <p class="pl-sub">Real students, real offers.</p>
+      <div class="pl-stories">
+        <div class="pl-story"><p>"The mock interviews and project work at CSC helped me crack my first interview."</p><b>Student Name</b><small>Python Developer, Company Name</small></div>
+        <div class="pl-story"><p>"Trainers guided me on resume and coding practice until I got placed."</p><b>Student Name</b><small>Full Stack Developer, Company Name</small></div>
+        <div class="pl-story"><p>"From a non-IT background to a software job – thanks to CSC placement support."</p><b>Student Name</b><small>Web Developer, Company Name</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pl-section">
+    <div class="pl-container">
+      <h2>Frequently Asked Questions</h2>
+      <p class="pl-sub">Quick answers about our placement support.</p>
+      <div class="pl-faq">
+        <div class="pl-faq-item"><button type="button" class="pl-faq-q">Do you provide placement guarantee? <span>+</span></button><div class="pl-faq-a">We provide 100% placement assistance – training, interview preparation and job referrals. Selection depends on your performance in company interviews.</div></div>
+        <div class="pl-faq-item"><button type="button" class="pl-faq-q">Who can join for placement support? <span>+</span></button><div class="pl-faq-a">Students and graduates enrolled in CSC courses, including freshers and career-gap candidates.</div></div>
+        <div class="pl-faq-item"><button type="button" class="pl-faq-q">Is there any extra fee for placement? <span>+</span></button><div class="pl-faq-a">Placement support is included in the course. Contact us for the latest details.</div></div>
+        <div class="pl-faq-item"><button type="button" class="pl-faq-q">How long does placement training take? <span>+</span></button><div class="pl-faq-a">It runs alongside the course and continues for a few weeks after completion until you are placed.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY -->
+  <section class="pl-cta" id="enquiry">
+    <div class="pl-container">
+      <h2>Not Sure Which Course to Choose?</h2>
+      <p class="pl-sub">Leave your details and our team will call you back.</p>
+      <form id="enquiryForm" class="pl-form">
+        {% csrf_token %}
+        <input type="text" id="plName" placeholder="Your Name" required>
+        <input type="tel" id="plPhone" placeholder="Phone Number" pattern="[0-9]{10}" title="Enter a 10 digit mobile number" required>
+        <input type="email" id="plEmail" class="pl-full" placeholder="Email Address">
+        <select id="plCourse" class="pl-full">
+          <option>Python Full Stack Development</option>
+          <option>Web Development</option>
+          <option>Java Programming</option>
+        </select>
+        <button type="submit" class="pl-btn pl-full">Talk to Us →</button>
+      </form>
+      <p id="plMsg"></p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  // FAQ accordion
+  document.querySelectorAll('.pl-faq-q').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var item = b.parentElement;
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.pl-faq-item').forEach(function (i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Animated counters
+  function runCounter(el) {
+    var end = +el.dataset.count;
+    var suffix = el.dataset.suffix || '';
+    var n = 0;
+    var step = Math.max(1, Math.ceil(end / 50));
+    var timer = setInterval(function () {
+      n += step;
+      if (n >= end) { n = end; clearInterval(timer); }
+      el.textContent = n + suffix;
+    }, 30);
+  }
+  var counterObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { runCounter(e.target); counterObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.pl-stats [data-count]').forEach(function (el) { counterObs.observe(el); });
+
+  // Scroll reveal (subtle)
+  var revealSel = '.pl-section h2, .pl-sub, .pl-card, .pl-step, .pl-story, .pl-partners div, .pl-faq-item, .pl-cta h2, .pl-form';
+  var revealObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('show'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.placement-page ' + revealSel.split(', ').join(', .placement-page ')).forEach(function (el) {
+    el.classList.add('pl-reveal');
+    revealObs.observe(el);
+  });
+
+  // Enquiry form (demo – shows message only)
+  document.getElementById('enquiryForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('plName').value;
+    document.getElementById('plMsg').textContent = 'Thank you, ' + name + '! We will contact you soon.';
+    e.target.reset();
+  });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,290 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/career.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+
+<!-----     <section class="career-hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <div class="hero-badge">💼 We Are Hiring</div>
+        <h1>Build Your Career With<br><span>CSC Anna Nagar</span></h1>
+        <p>Join our growing team of passionate educators and professionals.<br>
+           Explore exciting opportunities and take the next step in your career.</p>
+    </div>
+</section>--->
+
+
+<!-- ================================================================
+     MESSAGES
+     ================================================================ -->
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="msg {{ message.tags }}">
+        {% if message.tags == 'success' %}✅{% else %}❌{% endif %}
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<!-- ================================================================
+     JOB LISTINGS
+     ================================================================ -->
+<section class="career-section">
+    <div class="career-container">
+
+        <div class="section-head">
+            <h2>Open Positions</h2>
+            <p>Find your perfect role and be part of our mission to shape futures.</p>
+            <div class="gold-line"></div>
+        </div>
+
+        {% if careers %}
+        <div class="jobs-grid">
+
+            {% for job in careers %}
+            <div class="job-card" style="transition-delay: {{ forloop.counter0 }}00ms;">
+
+                <!-- Card Header -->
+                <div class="job-card-head">
+                    <div class="job-icon">💼</div>
+                    <span class="job-type-badge
+                        {% if job.employment_type == 'Full Time' %}badge-fulltime
+                        {% elif job.employment_type == 'Part Time' %}badge-parttime
+                        {% elif job.employment_type == 'Internship' %}badge-internship
+                        {% else %}badge-contract{% endif %}">
+                        {{ job.employment_type }}
+                    </span>
+                </div>
+
+                <!-- Title -->
+                <h3>{{ job.role }}</h3>
+
+                <!-- Meta -->
+                <div class="job-meta">
+                    {% if job.location %}
+                    <span class="meta-tag">📍 {{ job.location }}</span>
+                    {% endif %}
+                    {% if job.salary %}
+                    <span class="meta-tag">💰 {{ job.salary }}</span>
+                    {% endif %}
+                    <span class="meta-tag">📅 {{ job.posted_on|date:"d M Y" }}</span>
+                </div>
+
+                <!-- Description -->
+                <p class="job-desc">{{ job.job_description }}</p>
+
+                <!-- Skills -->
+                {% if job.skills_required %}
+                <div class="skills-wrap">
+                    {% for skill in job.skills_required.split|slice:":5" %}
+                    <span class="skill-tag">{{ skill|cut:"," }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- Apply Button -->
+                <button class="apply-btn"
+                        onclick="openApplyPopup('{{ job.id }}', '{{ job.role|escapejs }}')">
+                    Apply Now →
+                </button>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+        <div class="no-jobs">
+            <span class="nj-icon">🔍</span>
+            <h3>No Openings Right Now</h3>
+            <p>We are currently not hiring. Please check back soon for new opportunities!</p>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+
+
+<!-- ================================================================
+     APPLICATION POPUP
+     ================================================================ -->
+<div class="popup-overlay" id="applyPopup">
+    <div class="popup-box">
+
+        <!-- Popup Header -->
+        <div class="popup-header">
+            <h2>Apply for Position</h2>
+            <div class="popup-role-badge" id="popupRoleBadge">
+                💼 <span id="popupRoleName">Loading...</span>
+            </div>
+            <button class="popup-close" onclick="closeApplyPopup()" title="Close">✕</button>
+        </div>
+
+        <!-- Popup Form -->
+        <div class="popup-body">
+            <form method="POST" action="" enctype="multipart/form-data" id="applyForm">
+                {% csrf_token %}
+
+                <!-- Row 1: Name + Mobile -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text" name="name" class="form-input"
+                               placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number <span class="required">*</span></label>
+                        <input type="tel" name="mobile" class="form-input"
+                               placeholder="+91 XXXXX XXXXX" required>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" name="email" class="form-input"
+                           placeholder="your@email.com" required>
+                </div>
+
+                <!-- Role (read-only, auto-filled) -->
+                <div class="form-group">
+                    <label>Applying For</label>
+                    <input type="text" name="role_display" id="roleDisplayInput"
+                           class="form-input" readonly>
+                </div>
+
+                <!-- Row 2: Qualification + Year -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Highest Qualification <span class="required">*</span></label>
+                        <input type="text" name="highest_qualification" class="form-input"
+                               placeholder="e.g. B.E Computer Science" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Passed Out Year <span class="required">*</span></label>
+                        <input type="text" name="passed_out_year" class="form-input"
+                               placeholder="e.g. 2023" required maxlength="4">
+                    </div>
+                </div>
+
+                <!-- Resume Upload -->
+                <div class="form-group">
+                    <label>Resume <span class="required">*</span></label>
+                    <div class="file-wrap">
+                        <label class="file-label" id="resumeLabel">
+                            <span class="upload-icon">📎</span>
+                            <span id="resumeText">Click to upload your Resume (PDF / DOC)</span>
+                        </label>
+                        <input type="file" name="resume" class="file-input-hidden"
+                               id="resumeInput" accept=".pdf,.doc,.docx" required
+                               onchange="updateFileName(this,'resumeText')">
+                    </div>
+                </div>
+
+                <!-- Cover Letter -->
+                <div class="form-group">
+                    <label>Cover Letter <span style="color:var(--muted);font-weight:400;">(Optional)</span></label>
+                    <textarea name="cover_letter" class="form-input"
+                              placeholder="Tell us why you are the right fit for this role..."
+                              rows="4"></textarea>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="popup-submit" id="submitBtn">
+                    Submit Application 🚀
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
+<script>
+// ── Open popup & set career id + role name ─────────────────
+function openApplyPopup(careerId, roleName) {
+    // Set form action
+    document.getElementById('applyForm').action = '/careers/apply/' + careerId + '/';
+    // Set role display fields
+    document.getElementById('roleDisplayInput').value = roleName;
+    document.getElementById('popupRoleName').textContent = roleName;
+    // Show popup
+    document.getElementById('applyPopup').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+// ── Close popup ─────────────────────────────────────────────
+function closeApplyPopup() {
+    document.getElementById('applyPopup').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// Close on overlay click
+document.getElementById('applyPopup').addEventListener('click', function (e) {
+    if (e.target === this) closeApplyPopup();
+});
+
+// Close on ESC
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeApplyPopup();
+});
+
+// ── Show file name after selection ──────────────────────────
+function updateFileName(input, spanId) {
+    var span = document.getElementById(spanId);
+    if (input.files && input.files[0]) {
+        span.textContent = '✅ ' + input.files[0].name;
+        span.style.color = '#1e2a78';
+        span.style.fontWeight = '700';
+    }
+}
+
+// ── Submit loading state ────────────────────────────────────
+document.getElementById('applyForm').addEventListener('submit', function () {
+    var btn = document.getElementById('submitBtn');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+});
+
+// ── Scroll reveal for job cards ─────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
+    var cards = document.querySelectorAll('.job-card');
+    var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    cards.forEach(function (card) { obs.observe(card); });
+
+    // Auto-dismiss messages
+    document.querySelectorAll('.msg').forEach(function (msg) {
+        setTimeout(function () {
+            msg.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            msg.style.opacity = '0';
+            msg.style.transform = 'translateY(-10px)';
+            setTimeout(function () { msg.remove(); }, 500);
+        }, 6000);
+    });
+});
+</script>
+
+{% endblock %}

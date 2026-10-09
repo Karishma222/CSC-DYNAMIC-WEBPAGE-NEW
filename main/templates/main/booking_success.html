@@ -1,0 +1,124 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/courses.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="success-page">
+
+    <!-- Confetti dots (CSS only) -->
+    <div class="confetti-wrap" aria-hidden="true">
+        {% for i in "123456789012345678901234" %}
+        <div class="confetti-dot" style="--x: {{ forloop.counter }}; --d: {{ forloop.counter }}00ms;"></div>
+        {% endfor %}
+    </div>
+
+    <div class="success-card">
+
+        <!-- Success icon -->
+        <div class="success-icon">✅</div>
+
+        <!-- Heading -->
+        <h1>Thank You for Booking!</h1>
+        <p class="success-sub">
+            Welcome to <strong>CSC Anna Nagar Institute</strong>.<br>
+            Your seat has been reserved. Please complete the payment to confirm your registration.
+        </p>
+
+        <!-- Booking details table -->
+        <div class="booking-details">
+            <div class="bd-header">
+                <span>📋 Booking Summary</span>
+                <span class="bd-ref">Ref: {{ booking.booking_ref }}</span>
+            </div>
+
+            <div class="bd-row">
+                <span class="bd-label">Student Name</span>
+                <span class="bd-value">{{ booking.student_name }}</span>
+            </div>
+            <div class="bd-row">
+                <span class="bd-label">Email</span>
+                <span class="bd-value">{{ booking.email }}</span>
+            </div>
+            <div class="bd-row">
+                <span class="bd-label">Mobile</span>
+                <span class="bd-value">{{ booking.mobile }}</span>
+            </div>
+            <div class="bd-row">
+                <span class="bd-label">Course</span>
+                <span class="bd-value highlight">{{ booking.course.name }}</span>
+            </div>
+            <div class="bd-row">
+                <span class="bd-label">Duration</span>
+                <span class="bd-value">{{ booking.course.duration }}</span>
+            </div>
+            <div class="bd-row">
+                <span class="bd-label">Original Fee</span>
+                <span class="bd-value strike">₹{{ booking.course.original_fee|floatformat:0 }}</span>
+            </div>
+            <div class="bd-row">
+                <span class="bd-label">Amount to Pay</span>
+                <span class="bd-value amount">₹{{ booking.course.offer_fee|floatformat:0 }}</span>
+            </div>
+            <div class="bd-row">
+                <span class="bd-label">Booked On</span>
+                <span class="bd-value">{{ booking.booked_on|date:"d M Y, g:i A" }}</span>
+            </div>
+        </div>
+
+        <!-- QR Code section -->
+        <div class="qr-section">
+            <h3>💳 Complete Your Payment</h3>
+            <p>Scan the QR code below to pay <strong>₹{{ booking.course.offer_fee|floatformat:0 }}</strong></p>
+
+            <div class="qr-box">
+               
+                <img src="{% static 'main/images/qr.jpeg' %}" alt="Payment QR Code"
+                     onerror="this.parentElement.innerHTML='<div class=\'qr-placeholder\'>📲<br>QR Code<br><small>Upload qr.png to<br>static/main/images/</small></div>'">
+            </div>
+
+            <div class="payment-info">
+                <div class="pi-row">
+                    <span>📱 UPI / GPay / PhonePe / Paytm</span>
+                </div>
+                <div class="pi-row">
+                    <span>💰 Amount: <strong>₹{{ booking.course.offer_fee|floatformat:0 }}</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Important notice -->
+        <div class="notice-box">
+            <div class="notice-title">⚠️ Screenshot is Mandatory for Registration</div>
+            <p>After payment, send your payment screenshot to confirm your seat:</p>
+            <div class="contact-options">
+                <a href="https://wa.me/919940909056?text=Hi%20CSC%20Anna%20Nagar%2C%20I%20have%20completed%20payment%20for%20{{ booking.course.name|urlencode }}%20(Ref:%20{{ booking.booking_ref }})"
+                   class="contact-btn whatsapp" target="_blank">
+                    📱 Send on WhatsApp
+                </a>
+                <a href="mailto:annanagarcsc2024@gmail.com?subject=Payment Screenshot — {{ booking.booking_ref }}&body=Hi CSC Anna Nagar, I have completed payment for {{ booking.course.name }} (Ref: {{ booking.booking_ref }}). Please find my payment screenshot attached."
+                   class="contact-btn email">
+                    ✉️ Send via Email
+                </a>
+            </div>
+            <p class="notice-small">
+                WhatsApp: <strong>+91 9940909056</strong> &nbsp;|&nbsp;
+                Email: <strong>annanagarcsc2024@gmail.com</strong>
+            </p>
+        </div>
+
+        <!-- Confirmation email note -->
+        <div class="email-note">
+            📧 A confirmation email has been sent to <strong>{{ booking.email }}</strong>
+        </div>
+
+        <!-- Back to home -->
+        <a href="{% url 'home' %}" class="back-home-btn">← Back to Home</a>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,215 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/achievements.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ── Breadcrumb ─────────────────────────────────────────── -->
+<nav class="ach-breadcrumb" aria-label="Breadcrumb">
+    <div class="ach-container">
+        <a href="{% url 'home' %}">Home</a>
+        <span>→</span>
+        <a href="#">Achievements</a>
+        <span>→</span>
+        <span class="current">Achievement Details</span>
+    </div>
+</nav>
+
+<!-- ── Hero ───────────────────────────────────────────────── -->
+<section class="ach-hero ach-reveal">
+    <div class="ach-container ach-hero-grid">
+        <div class="ach-hero-text">
+            <span class="ach-eyebrow">Student Achievement</span>
+            <h1>Turning Learning Into Achievement</h1>
+            <p>A closer look at a learning milestone, project accomplishment or recognition at CSC.</p>
+            <div class="ach-hero-meta">
+                <span>Achievement Category</span>
+                <span>Date</span>
+                <span>Location</span>
+            </div>
+        </div>
+        <div class="ach-hero-img">
+            <img src="{% static 'main/images/hero.jpg' %}" alt="Students receiving achievement certificate">
+        </div>
+    </div>
+</section>
+
+<!-- ── About ──────────────────────────────────────────────── -->
+<section class="ach-about ach-reveal">
+    <div class="ach-container ach-about-grid">
+        <div class="ach-about-text">
+            <h2>About This Achievement</h2>
+            <p>This achievement recognises the dedication, practical skills and teamwork of our students. It highlights a learning milestone or project accomplishment delivered with high-quality standards and real-world focus.</p>
+            <p>The learning journey covers the core skills involved, where students moved from concepts to practical outcomes, building confidence and technical ability along the way.</p>
+            <p>CSC's support, guidance and hands-on training helped turn this effort into a recognised success.</p>
+        </div>
+
+        <aside class="ach-about-card">
+            <div class="ach-meta-item">
+                <span class="ach-meta-label">Achievement Type</span>
+                <span class="ach-meta-value">Student / Project / Academic / Workshop</span>
+            </div>
+            <div class="ach-meta-item">
+                <span class="ach-meta-label">Date</span>
+                <span class="ach-meta-value">DD Month 2026</span>
+            </div>
+            <div class="ach-meta-item">
+                <span class="ach-meta-label">Location</span>
+                <span class="ach-meta-value">[Location]</span>
+            </div>
+            <div class="ach-meta-item">
+                <span class="ach-meta-label">Category</span>
+                <span class="ach-meta-value">[Category]</span>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<!-- ── Highlights ─────────────────────────────────────────── -->
+<section class="ach-highlights ach-reveal">
+    <div class="ach-container">
+        <span class="ach-kicker">Key Highlights</span>
+        <h2>Achievement Highlights</h2>
+
+        <div class="ach-highlight-grid">
+            <div class="ach-highlight">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+                <h4>Practical Learning</h4>
+                <p>Learn through hands-on, structured learning.</p>
+            </div>
+            <div class="ach-highlight">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+                <h4>Project Development</h4>
+                <p>Ensures visual progress through project development.</p>
+            </div>
+            <div class="ach-highlight">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+                <h4>Technical Skills</h4>
+                <p>Strengthens skill-based technical knowledge.</p>
+            </div>
+            <div class="ach-highlight">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 3-6 6-6s6 2.5 6 6M15 14c3 0 6 2 6 5"/></svg>
+                <h4>Team Collaboration</h4>
+                <p>Team collaboration and acknowledgement.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Story ──────────────────────────────────────────────── -->
+<section class="ach-story ach-reveal">
+    <div class="ach-container">
+        <h2 class="ach-section-title">Project / Achievement Story</h2>
+        <div class="ach-story-grid">
+            <div class="ach-story-img">
+                <img src="{% static 'main/images/story.jpg' %}" alt="Students working on a project">
+            </div>
+            <div class="ach-story-text">
+                <h3>From Learning to Real-World Application</h3>
+                <ol class="ach-steps">
+                    <li>
+                        <span class="ach-step-no">01</span>
+                        <div><h4>Learning</h4><p>Understanding concepts through structured training.</p></div>
+                    </li>
+                    <li>
+                        <span class="ach-step-no">02</span>
+                        <div><h4>Building</h4><p>Applying knowledge through practical projects and activities.</p></div>
+                    </li>
+                    <li>
+                        <span class="ach-step-no">03</span>
+                        <div><h4>Achieving</h4><p>Presenting, completing or receiving recognition for the outcome.</p></div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Gallery ────────────────────────────────────────────── -->
+<section class="ach-gallery ach-reveal">
+    <div class="ach-container">
+        <h2 class="ach-section-title">Achievement Moments Gallery</h2>
+        <div class="ach-gallery-grid">
+            <img class="g-main" src="{% static 'main/images/gallery-1.jpg' %}" alt="Gallery 1">
+            <img src="{% static 'main/images/gallery-2.jpg' %}" alt="Gallery 2">
+            <img src="{% static 'main/images/gallery-3.jpg' %}" alt="Gallery 3">
+            <img src="{% static 'main/images/gallery-4.jpg' %}" alt="Gallery 4">
+            <img src="{% static 'main/images/gallery-5.jpg' %}" alt="Gallery 5">
+        </div>
+    </div>
+</section>
+
+<!-- ── Related ────────────────────────────────────────────── -->
+<section class="ach-related ach-reveal">
+    <div class="ach-container">
+        <h2 class="ach-section-title">Related Achievements</h2>
+        <div class="ach-related-grid">
+            <article class="ach-card">
+                <img src="{% static 'main/images/related-1.jpg' %}" alt="Student Success">
+                <div class="ach-card-body">
+                    <span>Category Achievement</span>
+                    <h4>Student Success</h4>
+                    <a href="#">View Achievement →</a>
+                </div>
+            </article>
+            <article class="ach-card">
+                <img src="{% static 'main/images/gallery-4.jpg' %}" alt="Project Showcase">
+                <div class="ach-card-body">
+                    <span>Category Project</span>
+                    <h4>Project Showcase</h4>
+                    <a href="#">View Achievement →</a>
+                </div>
+            </article>
+            <article class="ach-card">
+                <img src="{% static 'main/images/gallery-5.jpg' %}" alt="Learning Milestone">
+                <div class="ach-card-body">
+                    <span>Category Milestone</span>
+                    <h4>Learning Milestone</h4>
+                    <a href="#">View Achievement →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────── -->
+<section class="ach-cta">
+    <div class="ach-container">
+        <h2>Create Your Own Achievement Story</h2>
+        <p>Explore CSC courses and turn your learning into practical skills and meaningful outcomes.</p>
+        <div class="ach-cta-btns">
+            <a href="#" class="ach-btn ach-btn-light">Explore Courses →</a>
+            <a href="#" class="ach-btn ach-btn-outline">Contact CSC</a>
+        </div>
+    </div>
+</section>
+
+<!-- Back Button -->
+<div class="ach-back">
+    <a href="{% url 'home' %}">← Back to Home</a>
+</div>
+
+<!-- ── Scroll Reveal ──────────────────────────────────────── -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var items = document.querySelectorAll('.ach-reveal');
+    if (!('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('visible'); });
+        return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { observer.observe(el); });
+});
+</script>
+
+{% endblock %}

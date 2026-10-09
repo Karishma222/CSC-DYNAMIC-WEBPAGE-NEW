@@ -1,0 +1,53 @@
+
+<!---------*
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 650px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.slider {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    animation: slide 20s infinite;
+}
+.slider img {
+    width: 50%;
+    height: 100%;
+    object-fit: center;
+    object-position: center;
+    filter: brightness(50%);
+    flex-shrink: 0;
+    display: block;
+}
+.slider img .img1{
+    width: 30%;
+    height: 100%;
+    object-fit: center;
+}
+
+
+@keyframes slide {
+
+    0%, 30% {
+        transform: translateX(1.0%);
+    }
+    33%, 63% {
+        transform: translateX(-33.333%);
+    }
+    66%, 96% {
+        transform: translateX(-66.666%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,1318 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  
+
+/* ================================================================
+   CSC ANNA NAGAR — Contact Page
+   Navy #1e2a78 | Gold #ffca2c
+   ================================================================ */
+
+:root {
+  --navy:    #1e2a78;
+  --navy-dk: #0d1545;
+  --gold:    #ffca2c;
+  --gold-dk: #e6b400;
+  --white:   #ffffff;
+  --bg:      #f8f9ff;
+  --light:   #eef2ff;
+  --muted:   #6b7280;
+  --border:  #e2e8f8;
+  --ease:    cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Hero Section ──────────────────────────────────────────── */
+.contact-hero {
+  position: relative;
+  background: linear-gradient(135deg, #0a0f3d 0%, #1e2a78 55%, #0d1545 100%);
+  padding: 90px 2rem 80px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Grid overlay */
+.contact-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+/* Glow orbs */
+.contact-hero::after {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,202,44,0.09) 0%, transparent 65%);
+  animation: pulse-orb 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.orb-left {
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%);
+  animation: pulse-orb 11s ease-in-out 2s infinite alternate;
+  pointer-events: none;
+}
+@keyframes pulse-orb {
+  from { transform: scale(1) translate(0, 0); }
+  to   { transform: scale(1.2) translate(18px, -18px); }
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,202,44,0.12);
+  color: var(--gold);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,202,44,0.3);
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.7s var(--ease) 0.1s both;
+}
+
+.contact-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.7s var(--ease) 0.25s both;
+}
+.contact-hero h1 span { color: var(--gold); }
+
+.contact-hero p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.75;
+  animation: fadeUp 0.7s var(--ease) 0.4s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll cue ──────────────────────────────────────────────── */
+.scroll-cue {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s ease-in-out infinite;
+}
+.scroll-cue span {
+  display: block;
+  width: 24px; height: 24px;
+  border-right: 2px solid rgba(255,202,44,0.6);
+  border-bottom: 2px solid rgba(255,202,44,0.6);
+  transform: rotate(45deg);
+  margin: -8px auto 0;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Main Section ────────────────────────────────────────────── */
+/* =========================================
+   CONTACT PAGE
+=========================================*/
+
+.contact-top {
+  width: 100%;
+  background: #f3f6fb;
+
+  padding: 45px 20px 30px;
+
+  box-sizing: border-box;
+}
+.contact-top-inner {
+    max-width: 1100px;
+    margin:  0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+.contact-heading {
+    flex: 0 1 500px;
+}
+
+.contact-heading span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #193b79;
+}
+
+.contact-heading h1 {
+    margin: 10px 0;
+
+    font-size: 42px;
+    line-height: 1.05;
+
+    color: #071d43;
+}
+
+.contact-heading p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #222;
+}
+
+.contact-image {
+    width: 330px;
+    height: 195px;
+    display: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+
+    overflow: hidden;
+}
+
+.contact-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: center;
+}
+
+
+/* =========================================
+   CONTACT INFO BAR
+========================================= */
+
+.contact-info-bar {
+    max-width: 1100px;
+
+    margin: 30px auto 0;
+
+    padding: 15px;
+
+    background: white;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 8px 15px;
+
+    border-right: 1px solid #ddd;
+}
+
+.contact-info-item:last-child {
+    border-right: none;
+}
+
+.contact-info-item i {
+    font-size: 22px;
+
+    color: #f2c300;
+}
+
+.contact-info-item h4 {
+    font-size: 11px;
+
+    color: #173774;
+
+    margin-bottom: 5px;
+}
+
+.contact-info-item p {
+    font-size: 11px;
+
+    color: #555;
+}
+
+
+/* =========================================
+   FORM + HELP SECTION
+========================================= */
+
+.contact-message-section {
+    background: #f3f6fb;
+
+    padding: 35px 7%;
+}
+
+.contact-message-wrapper {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* FORM CARD */
+
+.message-card {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+}
+
+.message-card h2 {
+    color: #071d43;
+
+    font-size: 23px;
+
+    margin-bottom: 15px;
+}
+
+.input-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+
+    color: #222;
+}
+
+.input-group label span {
+    color: red;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+
+    padding: 9px;
+
+    border: 1px solid #cfd5df;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    font-size: 12px;
+
+    background: white;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #173774;
+}
+
+.input-group textarea {
+    height: 85px;
+
+    resize: none;
+}
+
+.send-message-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #ffca05;
+
+    color: #111;
+
+    padding: 11px;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.send-message-btn:hover {
+    background: #f1bb00;
+}
+
+.form-note {
+    text-align: center;
+
+    font-size: 9px;
+
+    color: #777;
+
+    margin-top: 7px;
+}
+
+
+/* =========================================
+   HELP CARD
+========================================= */
+
+.help-card {
+    background: #071f4b;
+
+    color: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+}
+
+.help-card h2 {
+    font-size: 23px;
+
+    margin-bottom: 25px;
+}
+
+.help-row {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.help-icon {
+    min-width: 35px;
+
+    height: 35px;
+
+    background: #f4c400;
+
+    color: #071f4b;
+
+    border-radius: 7px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.help-row h3 {
+    font-size: 13px;
+
+    margin-bottom: 4px;
+}
+
+.help-row p {
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    color: #dce5f5;
+}
+
+
+/* =========================================
+   VISIT CSC
+========================================= */
+
+.visit-section {
+    background: white;
+
+    padding: 40px 7%;
+}
+
+.visit-container {
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+.visit-heading h2 {
+    font-size: 27px;
+
+    color: #071d43;
+}
+
+.visit-heading p {
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    color: #444;
+}
+
+.visit-wrapper {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr;
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.map-area {
+    height: 200px;
+
+    background: #edf2f7;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.map-area i {
+    font-size: 40px;
+
+    color: #071f4b;
+
+    margin-bottom: 8px;
+}
+
+.map-area h3 {
+    font-size: 12px;
+}
+
+.map-area p {
+    font-size: 11px;
+
+    margin-top: 4px;
+}
+
+.visit-details {
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 20px;
+}
+
+.visit-details h3 {
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.visit-details p {
+    font-size: 11px;
+
+    color: #555;
+
+    margin-bottom: 15px;
+}
+
+.visit-details button {
+    border: none;
+
+    background: #071f4b;
+
+    color: white;
+
+    padding: 9px 15px;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   QUICK ANSWER
+========================================= */
+
+.quick-answer-section {
+    background: #071f4b;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 30px 20px;
+}
+
+.quick-answer-section h2 {
+    font-size: 23px;
+}
+
+.quick-answer-section p {
+    font-size: 12px;
+
+    margin: 7px 0 15px;
+
+    color: #dce5f5;
+}
+
+.quick-buttons a {
+    display: inline-block;
+
+    text-decoration: none;
+
+    background: #ffca05;
+
+    color: #111;
+
+    padding: 9px 20px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin: 0 3px;
+}
+
+
+/* =========================================
+   FAQ
+========================================= */
+
+.faq-section {
+    background: #f3f6fb;
+
+    padding: 40px 20px;
+}
+
+.faq-container {
+    max-width: 950px;
+
+    margin: auto;
+}
+
+.faq-container h2 {
+    color: #071d43;
+
+    font-size: 25px;
+
+    margin-bottom: 18px;
+}
+
+.faq-item {
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+    padding: 14px 15px;
+
+    margin-bottom: 7px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.faq-item b {
+    font-size: 18px;
+
+    color: #555;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .contact-top-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .contact-image {
+        width: 100%;
+    }
+
+    .contact-info-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info-item {
+        border-right: none;
+
+        border-bottom: 1px solid #ddd;
+    }
+
+    .contact-info-item:last-child {
+        border-bottom: none;
+    }
+
+    .contact-message-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .visit-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ── Success / Error messages ────────────────────────────────── */
+.flash-messages { padding: 1rem 2rem 0; max-width: 1100px; margin: 0 auto; }
+.flash-msg {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex; align-items: center; gap: 8px;
+  animation: slideDown 0.4s ease;
+}
+.flash-msg.success { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #4caf50; }
+.flash-msg.error   { background: #fce4ec; color: #c62828; border-left: 4px solid #e53935; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contact-wrapper { grid-template-columns: 1fr; gap: 2.2rem; }
+  .info-panel { position: static; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .contact-hero { padding: 70px 1.5rem 60px; }
+  .contact-section { padding: 50px 1.2rem; }
+  .form-card { padding: 2rem 1.5rem; }
+  .social-row { flex-wrap: wrap; }
+}
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<section class="contact-hero">
+    <div class="orb-left"></div>
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <span>📬</span> Get In Touch
+        </div>
+        <h1>Contact <span>CSC Anna Nagar</span></h1>
+        <p>
+            Have a question about our courses? Want to book a free demo?<br>
+            We'd love to hear from you — reach out and we'll get back to you quickly.
+        </p>
+    </div>
+    <div class="scroll-cue"><span></span></div>
+</section>
+
+
+<!-- ── FLASH MESSAGES ─────────────────────────────────────────── -->
+{% if messages %}
+<div class="flash-messages">
+    {% for message in messages %}
+    <div class="flash-msg {{ message.tags }}">
+        {% if message.tags == 'success' %}✅{% else %}❌{% endif %}
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+<!-- ── MAIN CONTACT SECTION ───────────────────────────────────── -->
+
+<!-- ================= CONTACT TOP ================= -->
+
+<section class="contact-top">
+
+    <div class="contact-top-inner">
+
+        <div class="contact-heading">
+
+            <span>CONTACT CSC</span>
+
+            <h1>
+                Let's Start a<br>
+                Conversation
+            </h1>
+
+            <p>
+                Have a question about our courses, workshops,<br>
+                admissions or career support? Our team is here to help.
+            </p>
+
+        </div>
+
+        <div class="contact-image">
+
+            <img src="{% static 'main/images/intro.jpeg' %}"
+                 alt="Contact CSC">
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CONTACT INFO ================= -->
+
+    <div class="contact-info-bar">
+
+        <div class="contact-info-item">
+
+            <i class="fa-solid fa-location-dot"></i>
+
+            <div>
+                <h3>VISIT CSC</h3>
+                <p>ANNA NAGAR</p>
+            </div>
+
+        </div>
+
+
+        <div class="contact-info-item">
+
+            <i class="fa-solid fa-phone"></i>
+
+            <div>
+                <h3>CALL US</h3>
+                <p>+91 9940909056</p>
+            </div>
+
+        </div>
+
+
+        <div class="contact-info-item">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <div>
+                <h3>EMAIL US</h3>
+                <p>annanagarcsc2024@gmail.com</p>
+            </div>
+
+        </div>
+
+
+        <div class="contact-info-item">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            <div>
+                <h3>WHATSAPP</h3>
+                <p>+91 9940909056</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MESSAGE + HELP ================= -->
+
+<section class="contact-message-section">
+
+    <div class="contact-message-wrapper">
+
+
+        <!-- ================= FORM ================= -->
+
+        <div class="message-card">
+
+            <h2>Send Us a Message</h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="input-row">
+
+                    <div class="input-group">
+
+                        <label>
+                            Full Name <span>*</span>
+                        </label>
+
+                        <input type="text"
+                               name="name"
+                               placeholder="Full Name"
+                               required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Email Address <span>*</span>
+                        </label>
+
+                        <input type="email"
+                               name="email"
+                               placeholder="Email Address"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-row">
+
+                    <div class="input-group">
+
+                        <label>
+                            Mobile Number <span>*</span>
+                        </label>
+
+                        <input type="text"
+                               name="phone"
+                               placeholder="Mobile Number"
+                               required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Subject <span>*</span>
+                        </label>
+
+                        <select name="subject">
+
+                            <option>Course Enquiry</option>
+                            <option>Workshop</option>
+                            <option>Placement Support</option>
+                            <option>Career</option>
+                            <option>Admission / Registration</option>
+                            <option>General Enquiry</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Select Enquiry Type</label>
+
+                    <select name="enquiry">
+
+                        <option>Course Enquiry</option>
+                        <option>Workshop</option>
+                        <option>Placement Support</option>
+                        <option>Career</option>
+                        <option>Admission / Registration</option>
+                        <option>General Enquiry</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Message <span>*</span>
+                    </label>
+
+                    <textarea name="message"
+                              placeholder="Write your message here..."
+                              required></textarea>
+
+                </div>
+
+
+                <button type="submit" class="send-message-btn">
+                    Send Message →
+                </button>
+
+
+                <p class="form-note">
+                    Your information will only be used to respond to your enquiry.
+                </p>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- ================= HELP ================= -->
+
+        <div class="help-card">
+
+            <h2>How Can We Help?</h2>
+
+
+            <div class="help-row">
+
+                <div class="help-icon">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+
+                <div>
+                    <h3>Course Enquiry</h3>
+                    <p>
+                        Get information about courses
+                        and learning options
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="help-row">
+
+                <div class="help-icon">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+
+                <div>
+                    <h3>Admission & Registration</h3>
+                    <p>
+                        Get help with the registration process
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="help-row">
+
+                <div class="help-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <div>
+                    <h3>Placement Support</h3>
+                    <p>
+                        Learn about career preparation
+                        and placement support
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="help-row">
+
+                <div class="help-icon">
+                    <i class="fa-solid fa-comment"></i>
+                </div>
+
+                <div>
+                    <h3>General Enquiry</h3>
+                    <p>
+                        Ask us anything about CSC
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= VISIT CSC ================= -->
+
+<section class="visit-section">
+
+    <div class="visit-container">
+
+        <div class="visit-heading">
+
+            <h2>Visit CSC</h2>
+
+            <p>
+                Come and meet us to learn more about our courses,
+                training and learning environment.
+            </p>
+
+        </div>
+
+
+        <div class="visit-wrapper">
+
+            <div class="map-area">
+
+    <iframe
+        src="https://www.google.com/maps?q=CSC+Computer+Education,+AP-814,+G+Block,+1st+Street,+Anna+Nagar,+Chennai+600040&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+
+     
+            </div>
+
+
+            <div class="visit-details">
+
+                <h3>Visit Us</h3>
+
+                <p>AP 814, G Block, 1st Street, near Anna Nagar Tower,<br>
+                  Metro Station, Anna Nagar, Chennai-600040.
+                </p>
+
+
+                <h3>Opening Hours</h3>
+
+                <p>Mon-Sat 9:00 AM - 7:00 PM<br>
+                  Sunday-Closed
+                </p>
+
+
+                <button>
+                    Get Directions →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= QUICK ANSWER ================= -->
+
+<section class="quick-answer-section">
+
+    <h2>Need a Quick Answer?</h2>
+
+    <p>
+        Reach out directly and our team will guide you.
+    </p>
+
+    <div class="quick-buttons">
+
+        <a href="tel:+91 9940909056">
+            Call CSC
+        </a>
+
+        <a href="https://wa.me/91 ~">
+            WhatsApp Us
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FAQ ================= -->
+
+<section class="faq-section">
+
+    <div class="faq-container">
+
+        <h2>Frequently Asked Questions</h2>
+
+
+        <div class="faq-item">
+
+            <span>
+                What courses does CSC offer?
+            </span>
+
+            <b>+</b>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <span>
+                Can I visit CSC before registering?
+            </span>
+
+            <b>+</b>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <span>
+                How can I get placement support?
+            </span>
+
+            <b>+</b>
+
+        </div>
+
+      </div>
+
+</section>
+
+
+
+<!-- ── MAP SECTION ────────────────────────────────────────────── -->
+<section class="map-section">
+    <div class="map-wrapper">
+        <h3>📍 Find Us on the Map</h3>
+        <p>AP-814, "G" Block, 1st Street, Near Anna Nagar Tower,<br> Anna Nagar, Chennai</p>
+        <div class="map-frame">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.3895!2d80.2141!3d13.0849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52640e5a2a5555%3A0x1234567890abcdef!2sAnna+Nagar+Tower!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="CSC Anna Nagar Location">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── JavaScript ─────────────────────────────────────────────── -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // ── Scroll reveal for cards ─────────────────────────────
+    const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.c-card, .form-card').forEach(function (el) {
+        obs.observe(el);
+    });
+
+    // ── Submit loading state ────────────────────────────────
+    var form = document.getElementById('cscContactForm');
+    var btn  = document.getElementById('submitBtn');
+    if (form && btn) {
+        form.addEventListener('submit', function () {
+            btn.innerHTML = 'Sending... <span style="display:inline-block;animation:spin 1s linear infinite">⟳</span>';
+            btn.disabled = true;
+            btn.style.opacity = '0.75';
+        });
+    }
+
+    // ── Auto-dismiss flash messages ─────────────────────────
+    document.querySelectorAll('.flash-msg').forEach(function (msg) {
+        setTimeout(function () {
+            msg.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            msg.style.opacity = '0';
+            msg.style.transform = 'translateY(-10px)';
+            setTimeout(function () { msg.remove(); }, 500);
+        }, 6000);
+    });
+
+    // ── Add placeholders to Django form inputs ──────────────
+    var placeholders = {
+        'id_name':    'e.g. Ravi Kumar',
+        'id_phone':   'e.g. +91 98765 43210',
+        'id_email':   'e.g. your@email.com',
+        'id_subject': 'e.g. Query about Python Full Stack',
+        'id_message': 'Write your message here...',
+        'id_course':  '',
+    };
+    Object.keys(placeholders).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && placeholders[id]) el.setAttribute('placeholder', placeholders[id]);
+    });
+});
+</script>
+
+<style>
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+</style>
+
+{% endblock %}

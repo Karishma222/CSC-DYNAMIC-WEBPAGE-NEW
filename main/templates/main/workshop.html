@@ -1,0 +1,408 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Workshops & Training Events | CSC - Computer Software College{% endblock %}
+
+{% block content %}
+<style>
+.ws, .ws * { box-sizing: border-box; }
+.ws { --navy:#14205e; --navy2:#0d1744; --yel:#ffd60a; --ink:#1b1f33; --mut:#5b6179; --line:#dfe3ef; --tint:#f3f5fb; --green:#1f8a4c; --red:#d93a3a;
+      font-family: inherit; color: var(--ink); line-height: 1.5; }
+.ws a { text-decoration: none; }
+.ws h1,.ws h2,.ws h3,.ws p,.ws ul { margin: 0; padding: 0; }
+.ws ul { list-style: none; }
+.ws-wrap { width: min(1140px, 92%); margin-inline: auto; }
+
+/* buttons */
+.ws-btn { display:inline-block; padding:12px 24px; border-radius:999px; font-weight:700; border:2px solid transparent; cursor:pointer; font-size:1rem; transition:.2s; text-align:center; }
+.ws-btn.y { background:var(--yel); color:var(--navy2); } .ws-btn.y:hover { background:#ffe44d; }
+.ws-btn.n { background:var(--navy); color:#fff; } .ws-btn.n:hover { background:var(--navy2); }
+.ws-btn.g { border-color:rgba(255,255,255,.6); color:#fff; } .ws-btn.g:hover { background:rgba(255,255,255,.1); }
+.ws-btn.block { width:100%; }
+.ws a:focus-visible,.ws button:focus-visible,.ws input:focus-visible,.ws select:focus-visible,.ws summary:focus-visible { outline:3px solid var(--yel); outline-offset:2px; }
+
+/* hero */
+.ws-hero { background:var(--navy); background-image:radial-gradient(circle at 90% 0%, rgba(255,214,10,.22), transparent 40%); color:#fff; padding:64px 0 0; }
+.ws-hero__in { max-width:760px; padding-bottom:48px; }
+.ws-hero h1 { font-size:clamp(2rem,4.6vw,3.3rem); line-height:1.12; font-weight:800; letter-spacing:-.02em; margin-bottom:16px; }
+.ws-hero p { color:#d5dbf5; font-size:1.1rem; max-width:620px; margin-bottom:26px; }
+.ws-hero__btns { display:flex; flex-wrap:wrap; gap:12px; }
+.ws-stats { background:var(--navy2); }
+.ws-stats ul { display:grid; grid-template-columns:repeat(4,1fr); }
+.ws-stats li { padding:20px 12px; text-align:center; color:#d5dbf5; font-size:.92rem; border-left:1px solid rgba(255,255,255,.1); }
+.ws-stats li:first-child { border-left:0; }
+.ws-stats b { display:block; color:var(--yel); font-size:1.7rem; font-weight:800; }
+
+/* sections */
+.ws-sec { padding:64px 0; background:#fff; }
+.ws-sec.tint { background:var(--tint); }
+.ws-sec.navy { background:var(--navy); color:#fff; }
+.ws-head { margin-bottom:26px; }
+.ws-head h2 { font-size:clamp(1.5rem,3vw,2.1rem); color:var(--navy); letter-spacing:-.01em; margin-bottom:6px; }
+.ws-head p { color:var(--mut); }
+
+/* tabs */
+.ws-tabs { display:flex; flex-wrap:wrap; gap:8px 28px; margin-bottom:26px; }
+.ws-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.ws-chip { border:1px solid var(--line); background:#fff; color:var(--ink); padding:8px 18px; border-radius:999px; font:inherit; font-size:.95rem; cursor:pointer; }
+.ws-chip:hover { border-color:var(--navy); }
+.ws-chip.on { background:var(--yel); border-color:var(--yel); color:var(--navy2); font-weight:700; }
+
+/* event cards */
+.ws-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:24px; }
+.ws-ev { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 6px 18px rgba(20,32,94,.07); }
+.ws-ev[hidden] { display:none; }
+.ws-ev__top { position:relative; height:150px; display:flex; align-items:flex-end; padding:16px; color:#fff; font-size:1.6rem; font-weight:800; letter-spacing:-.01em; }
+.ws-ev__top.t1 { background:linear-gradient(135deg,#14205e,#2f4bb8); }
+.ws-ev__top.t2 { background:linear-gradient(135deg,#0d6b5a,#18a88e); }
+.ws-ev__top.t3 { background:linear-gradient(135deg,#7a2a14,#d9631e); }
+.ws-ev__top.t4 { background:linear-gradient(135deg,#3b1a6b,#7b45d1); }
+.ws-ev__date { position:absolute; top:14px; left:14px; background:var(--yel); color:var(--navy2); border-radius:10px; padding:6px 12px; text-align:center; line-height:1.1; }
+.ws-ev__date b { display:block; font-size:1.5rem; }
+.ws-ev__date span { font-size:.8rem; font-weight:700; }
+.ws-ev__tag { position:absolute; top:14px; right:14px; background:#fff; color:var(--navy); border-radius:999px; padding:4px 12px; font-size:.8rem; font-weight:700; }
+.ws-ev__tag.free { color:var(--green); }
+.ws-ev__body { padding:18px 20px 8px; flex:1; }
+.ws-ev__body h3 { font-size:1.15rem; color:var(--navy); margin-bottom:8px; }
+.ws-ev__body p { color:var(--mut); font-size:.95rem; margin-bottom:12px; }
+.ws-ev__meta li { font-size:.9rem; padding:3px 0; color:var(--ink); }
+.ws-ev__meta li span { color:var(--mut); display:inline-block; width:74px; }
+.ws-ev__foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 20px 18px; }
+.ws-seat { font-size:.85rem; color:var(--red); font-weight:700; }
+.ws-seat.ok { color:var(--mut); font-weight:500; }
+.ws-ev.past { background:#fafbfe; }
+.ws-ev.past .ws-ev__top { filter:grayscale(.85); }
+.ws-empty { text-align:center; color:var(--mut); padding:28px 0 0; }
+
+/* perks */
+.ws-perks { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; }
+.ws-perk { background:#fff; border-left:5px solid var(--yel); border-radius:6px; padding:20px; }
+.ws-perk h3 { color:var(--navy); font-size:1.08rem; margin-bottom:4px; }
+.ws-perk p { color:var(--mut); font-size:.95rem; }
+
+/* steps */
+.ws-steps { list-style:none; counter-reset:s; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:24px; padding:0; margin:0; }
+.ws-steps li { counter-increment:s; position:relative; padding-top:56px; }
+.ws-steps li::before { content:counter(s); position:absolute; top:0; left:0; width:42px; height:42px; border-radius:50%; background:var(--yel); color:var(--navy2); font-weight:800; font-size:1.15rem; display:flex; align-items:center; justify-content:center; }
+.ws-steps b { display:block; color:var(--navy); margin-bottom:3px; }
+.ws-steps span { color:var(--mut); font-size:.95rem; }
+
+/* register */
+.ws-reg { display:grid; grid-template-columns:.9fr 1.1fr; gap:44px; align-items:start; }
+.ws-reg h2 { font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:12px; }
+.ws-reg__t p { color:#d5dbf5; margin-bottom:12px; }
+.ws-reg__t ul li { color:#fff; padding:5px 0; }
+.ws-reg__t a { color:var(--yel); font-weight:700; }
+.ws-form { background:#fff; color:var(--ink); border-radius:16px; padding:26px; display:grid; gap:14px; box-shadow:0 20px 40px rgba(0,0,0,.25); }
+.ws-form label { display:grid; gap:5px; font-weight:500; font-size:.92rem; }
+.ws-form input,.ws-form select { width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:8px; font:inherit; background:#fff; color:var(--ink); }
+.ws-form .row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+/* faq */
+.ws-narrow { width:min(760px,92%); margin-inline:auto; }
+.ws-faq { border-bottom:1px solid var(--line); }
+.ws-faq summary { cursor:pointer; list-style:none; padding:16px 30px 16px 0; font-weight:700; color:var(--navy); position:relative; }
+.ws-faq summary::-webkit-details-marker { display:none; }
+.ws-faq summary::after { content:"+"; position:absolute; right:4px; top:10px; font-size:1.5rem; }
+.ws-faq[open] summary::after { content:"\2212"; }
+.ws-faq p { color:var(--mut); padding-bottom:16px; }
+
+/* cta */
+.ws-cta { background:var(--yel); padding:40px 0; }
+.ws-cta__in { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; }
+.ws-cta h2 { color:var(--navy2); font-size:1.5rem; }
+.ws-cta p { color:#3c3a1c; }
+
+@media (max-width:900px) {
+  .ws-reg { grid-template-columns:1fr; gap:32px; }
+  .ws-stats ul { grid-template-columns:repeat(2,1fr); }
+  .ws-stats li:nth-child(3) { border-left:0; }
+  .ws-sec { padding:48px 0; }
+}
+@media (max-width:520px) {
+  .ws-grid { grid-template-columns:1fr; }
+  .ws-form .row { grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion:reduce) { .ws * { transition:none !important; } }
+</style>
+
+<div class="ws">
+
+<!-- HERO -->
+<section class="ws-hero">
+  <div class="ws-wrap">
+    <div class="ws-hero__in">
+      <h1>IT Workshops &amp; Training Events at CSC</h1>
+      <p>One-day, hands-on sessions in Python, web development, Java and more. Learn from working developers, build a small project, and take home a certificate.</p>
+      <div class="ws-hero__btns">
+        <a href="#events" class="ws-btn y">Browse workshops</a>
+        <a href="#register" class="ws-btn g">Reserve a seat</a>
+      </div>
+    </div>
+  </div>
+  <div class="ws-stats">
+    <div class="ws-wrap">
+      <ul>
+        <li><b>50+</b>Workshops conducted</li>
+        <li><b>2,000+</b>Students trained</li>
+        <li><b>25</b>Seats per batch</li>
+        <li><b>100%</b>Hands-on practice</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="ws-sec" id="events">
+  <div class="ws-wrap">
+    <div class="ws-head">
+      <h2>Workshops and events</h2>
+      <p>Choose a workshop, check the date and mode, and reserve your seat.</p>
+    </div>
+
+    <div class="ws-tabs">
+      <div class="ws-chips" data-f="when" role="group" aria-label="Filter by date">
+        <button class="ws-chip on" data-v="all">All</button>
+        <button class="ws-chip" data-v="upcoming">Upcoming</button>
+        <button class="ws-chip" data-v="past">Past</button>
+      </div>
+      <div class="ws-chips" data-f="mode" role="group" aria-label="Filter by mode">
+        <button class="ws-chip on" data-v="all">Any mode</button>
+        <button class="ws-chip" data-v="online">Online</button>
+        <button class="ws-chip" data-v="offline">Offline</button>
+      </div>
+    </div>
+
+    <div class="ws-grid" id="wsGrid">
+
+      <article class="ws-ev" data-when="upcoming" data-mode="offline">
+        <div class="ws-ev__top t1">
+          <div class="ws-ev__date"><b>18</b><span>OCT</span></div>
+          <span class="ws-ev__tag free">Free</span>
+          Python
+        </div>
+        <div class="ws-ev__body">
+          <h3>Python Basics in One Day</h3>
+          <p>Variables, loops, functions and a small automation script.</p>
+          <ul class="ws-ev__meta">
+            <li><span>Time</span>10:00 AM - 4:00 PM</li>
+            <li><span>Venue</span>CSC Annanagar (Offline)</li>
+            <li><span>Level</span>Beginner</li>
+          </ul>
+        </div>
+        <div class="ws-ev__foot">
+          <span class="ws-seat">7 seats left</span>
+          <a href="#register" class="ws-btn n">Register</a>
+        </div>
+      </article>
+
+      <article class="ws-ev" data-when="upcoming" data-mode="online">
+        <div class="ws-ev__top t2">
+          <div class="ws-ev__date"><b>25</b><span>OCT</span></div>
+          <span class="ws-ev__tag">Rs. 199</span>
+          Web Development
+        </div>
+        <div class="ws-ev__body">
+          <h3>Build Your First Website</h3>
+          <p>HTML, CSS and a responsive portfolio page, live on the web by evening.</p>
+          <ul class="ws-ev__meta">
+            <li><span>Time</span>10:00 AM - 2:00 PM</li>
+            <li><span>Venue</span>Google Meet (Online)</li>
+            <li><span>Level</span>Beginner</li>
+          </ul>
+        </div>
+        <div class="ws-ev__foot">
+          <span class="ws-seat ok">15 seats left</span>
+          <a href="#register" class="ws-btn n">Register</a>
+        </div>
+      </article>
+
+      <article class="ws-ev" data-when="upcoming" data-mode="offline">
+        <div class="ws-ev__top t3">
+          <div class="ws-ev__date"><b>08</b><span>NOV</span></div>
+          <span class="ws-ev__tag">Rs. 299</span>
+          Java
+        </div>
+        <div class="ws-ev__body">
+          <h3>Java for Interviews</h3>
+          <p>OOP concepts and the coding questions companies ask freshers.</p>
+          <ul class="ws-ev__meta">
+            <li><span>Time</span>10:00 AM - 4:00 PM</li>
+            <li><span>Venue</span>CSC Annanagar (Offline)</li>
+            <li><span>Level</span>Intermediate</li>
+          </ul>
+        </div>
+        <div class="ws-ev__foot">
+          <span class="ws-seat ok">20 seats left</span>
+          <a href="#register" class="ws-btn n">Register</a>
+        </div>
+      </article>
+
+      <article class="ws-ev past" data-when="past" data-mode="offline">
+        <div class="ws-ev__top t4">
+          <div class="ws-ev__date"><b>20</b><span>SEP</span></div>
+          <span class="ws-ev__tag">Completed</span>
+          Django
+        </div>
+        <div class="ws-ev__body">
+          <h3>Django in a Day</h3>
+          <p>Models, views and templates: a working blog app from scratch.</p>
+          <ul class="ws-ev__meta">
+            <li><span>Venue</span>CSC Annanagar (Offline)</li>
+            <li><span>Level</span>Intermediate</li>
+          </ul>
+        </div>
+        <div class="ws-ev__foot">
+          <span class="ws-seat ok">25 students attended</span>
+          <a href="#" class="ws-btn n">Photos</a>
+        </div>
+      </article>
+
+      <article class="ws-ev past" data-when="past" data-mode="online">
+        <div class="ws-ev__top t1">
+          <div class="ws-ev__date"><b>06</b><span>SEP</span></div>
+          <span class="ws-ev__tag">Completed</span>
+          UI Design
+        </div>
+        <div class="ws-ev__body">
+          <h3>UI Design with Figma</h3>
+          <p>Design a mobile app screen and hand it over to developers.</p>
+          <ul class="ws-ev__meta">
+            <li><span>Venue</span>Google Meet (Online)</li>
+            <li><span>Level</span>Beginner</li>
+          </ul>
+        </div>
+        <div class="ws-ev__foot">
+          <span class="ws-seat ok">40 students attended</span>
+          <a href="#" class="ws-btn n">Photos</a>
+        </div>
+      </article>
+
+    </div>
+    <p class="ws-empty" id="wsEmpty" hidden>No workshops match these filters. Try "All" or "Any mode".</p>
+  </div>
+</section>
+
+<!-- WHY ATTEND -->
+<section class="ws-sec tint">
+  <div class="ws-wrap">
+    <div class="ws-head"><h2>What you get in every workshop</h2></div>
+    <div class="ws-perks">
+      <div class="ws-perk"><h3>Live coding</h3><p>You type along with the trainer. No slides-only sessions.</p></div>
+      <div class="ws-perk"><h3>A finished mini project</h3><p>Leave with something you can show on your resume or GitHub.</p></div>
+      <div class="ws-perk"><h3>CSC certificate</h3><p>Issued to every participant who completes the session.</p></div>
+      <div class="ws-perk"><h3>Small batches</h3><p>Maximum 25 students, so every doubt gets answered.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO JOIN -->
+<section class="ws-sec">
+  <div class="ws-wrap">
+    <div class="ws-head"><h2>How to join</h2></div>
+    <ol class="ws-steps">
+      <li><b>Pick a workshop</b><span>Choose a date and mode that works for you.</span></li>
+      <li><b>Reserve your seat</b><span>Fill the form below. It takes a minute.</span></li>
+      <li><b>Get a confirmation</b><span>We call or WhatsApp you with the details.</span></li>
+      <li><b>Attend and build</b><span>Lab systems are available for offline sessions.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="ws-sec navy" id="register">
+  <div class="ws-wrap ws-reg">
+    <div class="ws-reg__t">
+      <h2>Reserve your seat</h2>
+      <p>Seats are limited so everyone gets personal help. Fill in your details and our team will confirm your booking.</p>
+      <ul>
+        <li>Call: <a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></li>
+        <li>Email: <a href="mailto:info@csc.com">info@csc.com</a></li>
+        <li>Visit: CSC - Computer Software College, [College Address]</li>
+      </ul>
+    </div>
+
+    <!-- action="" ku unga booking view URL kudunga -->
+    <form class="ws-form" method="post" action="">
+      {% csrf_token %}
+      <label>Full name
+        <input type="text" name="name" required placeholder="Your name">
+      </label>
+      <div class="row">
+        <label>Phone
+          <input type="tel" name="phone" required placeholder="10-digit number" pattern="[0-9]{10}">
+        </label>
+        <label>Email
+          <input type="email" name="email" placeholder="you@example.com">
+        </label>
+      </div>
+      <label>Workshop
+        <select name="workshop" required>
+          <option value="">Choose a workshop</option>
+          <option>Python Basics in One Day (18 Oct)</option>
+          <option>Build Your First Website (25 Oct)</option>
+          <option>Java for Interviews (8 Nov)</option>
+        </select>
+      </label>
+      <label>You are a
+        <select name="status">
+          <option>School student</option>
+          <option>College student</option>
+          <option>Fresher</option>
+          <option>Working professional</option>
+        </select>
+      </label>
+      <button type="submit" class="ws-btn y block">Confirm my seat</button>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="ws-sec">
+  <div class="ws-narrow">
+    <div class="ws-head"><h2>Common questions</h2></div>
+    <details class="ws-faq"><summary>Do I need coding experience?</summary><p>No. Workshops marked Beginner start from zero.</p></details>
+    <details class="ws-faq"><summary>Do I need to bring a laptop?</summary><p>For offline workshops, our lab systems are available. For online sessions, you need your own laptop or PC.</p></details>
+    <details class="ws-faq"><summary>Will I get a certificate?</summary><p>Yes. Every participant who completes the session gets a CSC certificate.</p></details>
+    <details class="ws-faq"><summary>Can I cancel my booking?</summary><p>Yes. Call us at least a day before so another student can take your seat.</p></details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ws-cta">
+  <div class="ws-wrap ws-cta__in">
+    <div>
+      <h2>Want to learn more than one day allows?</h2>
+      <p>Our full courses go deeper, with projects and placement support.</p>
+    </div>
+    <a href="/courses/" class="ws-btn n">Explore courses</a>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function () {
+  var st = { when: 'all', mode: 'all' };
+  var cards = document.querySelectorAll('#wsGrid .ws-ev');
+  var empty = document.getElementById('wsEmpty');
+  function apply() {
+    var n = 0;
+    cards.forEach(function (c) {
+      var ok = (st.when === 'all' || c.dataset.when === st.when) && (st.mode === 'all' || c.dataset.mode === st.mode);
+      c.hidden = !ok; if (ok) n++;
+    });
+    empty.hidden = n !== 0;
+  }
+  document.querySelectorAll('.ws-chips').forEach(function (g) {
+    g.addEventListener('click', function (e) {
+      var b = e.target.closest('.ws-chip'); if (!b) return;
+      g.querySelectorAll('.ws-chip').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on'); st[g.dataset.f] = b.dataset.v; apply();
+    });
+  });
+  apply();
+})();
+</script>
+
+{% endblock %}

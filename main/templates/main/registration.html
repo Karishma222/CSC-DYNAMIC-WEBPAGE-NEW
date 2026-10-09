@@ -1,0 +1,135 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/registration.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="reg-page">
+    <div class="reg-card">
+
+        <!-- Header -->
+        <header class="reg-header">
+            <span class="reg-badge">CSC Scholarship Exam</span>
+            <h1>SAT 2026 <span class="reg-highlight">75%</span> Scholarship<br>Registration Form</h1>
+            <p>Fill in your details below to register for the Scholarship Aptitude Test.</p>
+        </header>
+
+        <form method="POST" action="{% url 'registration' %}" class="reg-form" novalidate>
+            {% csrf_token %}
+
+            {% if messages %}
+                <div class="reg-messages">
+                    {% for message in messages %}
+                        <p class="reg-msg {% if message.tags %}reg-msg-{{ message.tags }}{% endif %}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if form.errors %}
+                <ul class="reg-errors">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <!-- Personal details -->
+            <h2 class="reg-section-title">Personal Details</h2>
+
+            <div class="reg-field">
+                <label for="reg-name">Name</label>
+                <input type="text" id="reg-name" name="name" placeholder="Enter your full name" autocomplete="name" required>
+            </div>
+
+            <div class="reg-field">
+                <label for="reg-address">Address</label>
+                <textarea id="reg-address" name="address" rows="3" placeholder="Door no, street, city" autocomplete="street-address" required></textarea>
+            </div>
+
+            <div class="reg-field">
+                <span class="reg-label">Gender</span>
+                <div class="reg-radio-group">
+                    <label class="reg-radio">
+                        <input type="radio" name="gender" value="male" required>
+                        <span>Male</span>
+                    </label>
+                    <label class="reg-radio">
+                        <input type="radio" name="gender" value="female">
+                        <span>Female</span>
+                    </label>
+                    <label class="reg-radio">
+                        <input type="radio" name="gender" value="others">
+                        <span>Others</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Education & location -->
+            <h2 class="reg-section-title">Education &amp; Location</h2>
+
+            <div class="reg-grid">
+                <div class="reg-field qualification-group">
+                    <label for="reg-qualification">Qualification</label>
+                    <select id="reg-qualification" name="qualification" required>
+                        <option value="">Select Qualification</option>
+                        <option value="Below 10th">Below 10th</option>
+                        <option value="10th">10th</option>
+                        <option value="12th">12th</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="UG">UG</option>
+                        <option value="PG">PG</option>
+                    </select>
+                </div>
+
+                <div class="reg-field">
+                    <label for="reg-timing">Timings</label>
+                    <select id="reg-timing" name="timing" required>
+                        <option value="">Select Timing</option>
+                        <option value="Morning">8:00 AM - 12:00 PM</option>
+                        <option value="Afternoon">12:00 PM - 5:00 PM</option>
+                        <option value="Evening">5:00 PM - 9:00 PM</option>
+                    </select>
+                </div>
+
+                <div class="reg-field">
+                    <label for="reg-district">District</label>
+                    <select id="reg-district" name="district" required>
+                    <option value="">Select District</option>
+                    {% for d in districts %}
+                    <option value="{{ d }}" {% if form.district.value == d %}selected{% endif %}>{{ d }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+                <div class="reg-field">
+                    <label for="reg-area">Area</label>
+                    <input type="text" id="reg-area" name="area" placeholder="Your area / locality" required>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <h2 class="reg-section-title">Contact Details</h2>
+
+            <div class="reg-grid">
+                <div class="reg-field">
+                    <label for="reg-mobile">Mobile Number</label>
+                    <input type="text" id="reg-mobile" name="mobile" placeholder="10-digit mobile number" inputmode="tel" autocomplete="tel" required>
+                    <p class="reg-hint">Enter the correct <span>Mobile Number</span> to download the SAT 2026 Admit Card</p>
+                </div>
+
+                <div class="reg-field">
+                    <label for="reg-email">Email ID</label>
+                    <input type="email" id="reg-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                </div>
+            </div>
+
+            <button type="submit" class="reg-submit">Register Now</button>
+            <p class="reg-note">By registering, you agree to be contacted by CSC regarding the SAT 2026 exam.</p>
+        </form>
+    </div>
+</section>
+{% endblock %}
