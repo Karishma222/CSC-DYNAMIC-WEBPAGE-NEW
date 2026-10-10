@@ -85,46 +85,158 @@ body {
   align-items: center;
 }
 
+/* ================= NAV LINKS ================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Normal link */
 .nav-links a {
-  text-decoration: none;
-  color: var(--navy);
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.45rem 0.9rem;
-  border-radius: 8px;
-  position: relative;
-  transition: var(--transition);
+    position: relative;
+    display: inline-block;
+
+    padding: 8px 0;
+
+    color: #222;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    background: transparent;
+    border: none;
+
+    /* IMPORTANT - prevent text zoom/jump */
+    transform: none !important;
+
+    transition: color 0.2s ease;
 }
 
+/* Remove old underline */
 .nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: 2px; left: 50%;
-  width: 0; height: 2px;
-  background: var(--gold);
-  border-radius: 2px;
-  transform: translateX(-50%);
-  transition: width 0.3s ease;
+    content: "";
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 3px;
+
+    background: #1e2a78;
+    border-radius: 2px;
+
+    transform: none;
+
+    transition: width 0.25s ease;
 }
 
-.nav-links a:hover { background: var(--light-bg); color: var(--navy-dark); }
-.nav-links a:hover::after { width: 60%; }
+/* Hover */
+.nav-links a:hover {
+    color: #1e2a78;
+    background: transparent;
+
+    /* IMPORTANT */
+    transform: none !important;
+
+    /* Don't change font size/weight */
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ACTIVE PAGE */
+.nav-links a.active {
+    color: #1e2a78;
+
+    /* Keep same size as normal link */
+    font-size: 16px;
+    font-weight: 400;
+
+    background: transparent;
+
+    transform: none !important;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* =========================================
+   CONTACT BUTTON
+   ========================================= */
+
+.nav-links a.nav-btn {
+    padding: 8px 20px !important;
+
+    background: #1e2a78 !important;
+    color: #fff !important;
+
+    border-radius: 8px;
+
+    font-size: 16px !important;
+    font-weight: 600 !important;
+
+    transform: none !important;
+}
+
+/* Contact button should NOT have underline */
+.nav-links a.nav-btn::after {
+    display: none !important;
+}
+
+.nav-links a.nav-btn:hover {
+    background: #15205a !important;
+    color: #fff !important;
+
+    font-size: 16px !important;
+    transform: none !important;
+}
+
+.nav-links a:hover::after {
+    width: 60%;
+}
+
+/* ACTIVE PAGE */
+.nav-links a.active {
+    color: var(--navy-dark);
+    background: transparent;
+    font-weight: 600;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+    background: var(--navy);
+}
+
+/* Contact button - NO underline */
+.nav-links a.nav-btn::after {
+    display: none !important;
+}
 
 .nav-btn {
-  background: var(--navy) !important;
-  color: var(--white) !important;
-  padding: 0.5rem 1.2rem !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  transition: var(--transition) !important;
+    background: var(--navy) !important;
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
 }
+
 .nav-btn:hover {
-  background: var(--gold) !important;
-  color: var(--navy) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(255,202,44,0.4) !important;
+    background: var(--gold) !important;
+    color: var(--navy) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255,202,44,0.4) !important;
 }
-.nav-btn::after { display:none !important; }
 
 .mobile-toggle {
   display: none;
@@ -1103,28 +1215,67 @@ footer.site-footer {
 }
 .footer-col a:hover { color: var(--gold); }
 
+/* ================= FOOTER SOCIALS ================= */
+
 .footer-socials {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
 .footer-socials a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0.5rem 1rem;
-  background: rgba(255,255,255,0.06);
-  border-radius: 8px;
-  font-size: 0.88rem;
-  color: #9ba8d8 !important;
-  transition: var(--transition);
-  border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+
+    width: 250px;
+    min-height: 40px;
+    padding: 10px 14px;
+
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
+
+/* Normal text */
+.footer-socials a span {
+    color: #9ba8d8;
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: color 0.25s ease;
+}
+
+/* Hover */
 .footer-socials a:hover {
-  background: rgba(255,202,44,0.12);
-  color: var(--gold) !important;
-  border-color: rgba(255,202,44,0.3);
-  transform: translateX(4px);
+    background: #ffca2c;
+    border-color: #ffca2c;
+
+    box-shadow: 0 5px 15px rgba(255, 202, 44, 0.25);
+
+    transform: none;
+}
+
+.footer-socials a:hover span {
+    color: #0a1040;
+}
+
+/* Click */
+.footer-socials a:active {
+    background: #e0b200;
+    border-color: #e0b200;
+}
+
+.footer-socials a:active span {
+    color: #0a1040;
 }
 
 .footer-bottom {
@@ -2244,3 +2395,4 @@ main {
 }
 
 .video-sound-btn:hover { background: rgba(0, 0, 0, 0.85); }
+

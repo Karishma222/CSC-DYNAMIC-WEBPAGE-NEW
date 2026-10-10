@@ -250,3 +250,38 @@
 .reg-errors li {
     margin: 4px 0;
 }
+
+.reg-submit {
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 8px;
+
+    background: var(--reg-yellow);
+    color: var(--reg-navy);
+
+    border: none;
+    border-radius: var(--reg-radius);
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.reg-submit:hover {
+    background: var(--reg-yellow-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(11, 42, 91, 0.18);
+}
+
+.reg-submit:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.reg-submit:focus-visible {
+    outline: 3px solid rgba(11, 42, 91, 0.2);
+    outline-offset: 2px;
+}

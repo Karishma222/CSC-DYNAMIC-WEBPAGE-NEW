@@ -1,413 +1,443 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% block title %}CSC Anna Nagar{% endblock %}</title>
 
-{% comment %} <link rel="stylesheet" href="{% static 'main/css/style.css' %}"> {% endcomment %}
-<link rel="stylesheet" href="{% static 'main/css/style1.css' %}">
-<link rel="stylesheet" href="{%  static 'main/css/slider.css' %}">
-{% block extra_css %}{% endblock %}
-<link rel="stylesheet" href="{% static 'main/css/abouthome.css' %}">
-<link rel="stylesheet" href="{% static 'main/css/about1.css' %}">
-<link rel="stylesheet" href="{% static 'main/css/review.css' %}">
-<link rel="stylesheet" href="{% static 'main/css/courses.css' %}">
-<link rel="stylesheet" href="{% static 'main/css/head.css' %}">
-<link rel="stylesheet" href="{% static 'main/registration.html' %}">
-<script src="{% static 'main/js/main.js' %}" defer></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CSC Anna Nagar{% endblock %}</title>
+
+  {% comment %}
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'main/css/style1.css' %}">
+  <link rel="stylesheet" href="{%  static 'main/css/slider.css' %}">
+  {% block extra_css %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'main/css/abouthome.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/about1.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/review.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/courses.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/head.css' %}">
+  <link rel="stylesheet" href="{% static 'main/registration.html' %}">
+  <script src="{% static 'main/js/main.js' %}" defer></script>
 
 
 </head>
-<body>
-    
-<div class="top-bar">
-    <div class="scroll-content">
-        <span>📍 CSC Anna Nagar</span>
-        <span class="separator">|</span>
-        <span>📞 +91 9876543210</span>
-        <span class="separator">|</span>
-        <span>📧 cscannanagar@gmail.com</span>
-    </div>
-</div>
 
-  
-    <nav class="navbar">
+<body>
+
+  <div class="top-bar">
+    <div class="scroll-content">
+      <span>📍 CSC Anna Nagar</span>
+      <span class="separator">|</span>
+      <span>📞 +91 9876543210</span>
+      <span class="separator">|</span>
+      <span>📧 annanagarcsc2024@gmail.com</span>
+    </div>
+  </div>
+
+
+  <nav class="navbar">
 
     <!-- LOGO -->
     <div class="brand">
-        <a href="{% url 'home' %}">
-            <img src="{% static 'main/images/csc.webp' %}" alt="logo" class="logo">
-        </a>
+      <a href="{% url 'home' %}">
+        <img src="{% static 'main/images/csc.webp' %}" alt="logo" class="logo">
+      </a>
     </div>
 
     <!-- MENU -->
     <ul class="nav-links" id="navLinks">
-        <li><a href="{% url 'home' %}"> Home</a></li> 
-        
-        <li><a href="{% url 'about' %}"> About</a></li>
-        <li><a href="{% url 'career' %}"> Careers</a></li>
-        <li><a href="{% url 'achievements' %}"> Achievements</a></li>
-        <li><a href="{% url 'courses' %}"> Courses</a></li>
-        <li><a href="{% url 'workshop' %}"> Workshops</a></li>
-        <li><a href="{% url 'placement' %}"> Placement</a></li>
-        <li><a href="{% url 'contact' %}" class="nav-btn"> Contact</a></li>
+
+      <li>
+        <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+          About
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'career' %}" class="{% if request.resolver_match.url_name == 'career' %}active{% endif %}">
+          Careers
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'achievements' %}"
+          class="{% if request.resolver_match.url_name == 'achievements' %}active{% endif %}">
+          Achievements
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'courses' %}" class="{% if request.resolver_match.url_name == 'courses' %}active{% endif %}">
+          Courses
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'contact' %}" class="nav-btn">
+          Contact
+        </a>
+      </li>
+
     </ul>
 
     <!-- SOCIAL ICONS -->
     <div class="nav-socials">
 
-        <!-- WhatsApp -->
-        <a href="https://wa.me/919940909056?text=Hi%20CSC%20Anna%20Nagar%2C%20I%20want%20to%20know%20more%20about%20your%20courses."
-           target="_blank"
-           rel="noopener noreferrer"
-           class="nav-social-btn whatsapp"
-           title="Chat on WhatsApp">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-        </a>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919940909056?text=Hi%20CSC%20Anna%20Nagar%2C%20I%20want%20to%20know%20more%20about%20your%20courses."
+        target="_blank" rel="noopener noreferrer" class="nav-social-btn whatsapp" title="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+      </a>
 
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/csc_anna_nagar/"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="nav-social-btn instagram"
-           title="Follow on Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-        </a>
-        </div>
-        
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/csc_anna_nagar/" target="_blank" rel="noopener noreferrer"
+        class="nav-social-btn instagram" title="Follow on Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+    </div>
+
     </div>
 
     <!-- MOBILE BUTTON -->
     <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
 
-</nav>
-</header>
+  </nav>
+  </header>
 
-<main>
-{% if messages %}
-<div class="messages">
-{% for message in messages %}
-<div class="msg {{ message.tags }}">{{ message }}</div>
-{% endfor %}
-</div>
-{% endif %}
-
-
-{% block content %}{% endblock %}
-</main>
+  <main>
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <div class="msg {{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
 
-<footer class="site-footer">
+    {% block content %}{% endblock %}
+  </main>
+
+
+  <footer class="site-footer">
     <div class="footer-container">
 
-        <!-- ABOUT -->
-        <div class="footer-col">
-            <h3>CSC Anna Nagar</h3>
-            <p>
-                We provide high-quality training with real-time practical sessions,
-                helping students build strong careers in IT and software development.
-            </p>
-        </div>
+      <!-- ABOUT -->
+      <div class="footer-col">
+        <h3>CSC Anna Nagar</h3>
+        <p>
+          We provide high-quality training with real-time practical sessions,
+          helping students build strong careers in IT and software development.
+        </p>
+      </div>
 
-        <!-- QUICK LINKS -->
-        <div class="footer-col">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'about' %}">About Us</a></li>
-                <li><a href="{% url 'career' %}">Careers</a></li>
-                {% comment %} <li><a href="{% url 'workshops' %}">Workshops</a></li> {% endcomment %}
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-            </ul>
-        </div>
+      <!-- QUICK LINKS -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'career' %}">Careers</a></li>
+          {% comment %} <li><a href="{% url 'workshops' %}">Workshops</a></li> {% endcomment %}
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </div>
 
-        <!-- CONTACT -->
-        <div class="footer-col">
-            <h4>Contact</h4>
-            <p>Email: <a href="mailto:cscannanagar@gmail.com">annanagarcsc2024@gmail.com</a></p>
-            <p>Phone: +91 9940909056</p>
-            <p>P-814, "G" Block, 1st Street, Near Anna Nagar Tower, Near Saravana Bhavan Hotel,
-              Anna Nagar, Chennai</p>
-        </div>
+      <!-- CONTACT -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: <a href="mailto:annanagarcsc2024@gmail.com">annanagarcsc2024@gmail.com</a></p>
+        <p>Phone: +91 9940909056</p>
+        <p>P-814, "G" Block, 1st Street, Near Anna Nagar Tower, Near Saravana Bhavan Hotel,
+          Anna Nagar, Chennai</p>
+      </div>
 
-        <!-- SOCIAL -->
-        <div class="footer-col">
-            <h4>Follow Us</h4>
-            <div class="footer-socials">
-                <a href="https://www.facebook.com/csc_anna_nagar/" aria-label="Facebook"> Facebook</a>
-                <a href="https://www.instagram.com/csc_anna_nagar/" aria-label="Instagram">Instagram</a>
-                <a href="https://www.linkedin.com/in/cscannanagar-computer-education-170a47336/" aria-label="LinkedIn">LinkedIn</a>
-                <a href="https://wa.me/919940909056?text=Hi%20CSC%20Anna%20Nagar%2C%20I%20want%20to%20know%20more%20about%20your%20courses." aria-label="whatsapp"=whatsapp>WhatsApp</a>
-            </div>
+      <!-- SOCIAL -->
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/csc_anna_nagar/" aria-label="Facebook"> Facebook</a>
+          <a href="https://www.instagram.com/csc_anna_nagar/" aria-label="Instagram">Instagram</a>
+          <a href="https://www.linkedin.com/in/cscannanagar-computer-education-170a47336/"
+            aria-label="LinkedIn">LinkedIn</a>
+          <a href="https://wa.me/919940909056?text=Hi%20CSC%20Anna%20Nagar%2C%20I%20want%20to%20know%20more%20about%20your%20courses."
+            aria-label="whatsapp"=whatsapp>WhatsApp</a>
         </div>
+      </div>
 
     </div>
 
-<div class="footer-bottom">
-    <p>
+    <div class="footer-bottom">
+      <p>
         &copy; {{ now|date:"Y" }} CSC Anna Nagar. All rights reserved. <br>
         <span class="dev-credit">
-            Developed by 
-            <a href="https://senthilpandi.netlify.app/" target="_blank">
-                Senthil Pandi
-            </a>
+          Developed by
+          <a href="https://senthilpandi.netlify.app/" target="_blank">
+            Senthil Pandi
+          </a>
         </span>
-    </p>
-</div>
+      </p>
+    </div>
 
-</footer>
+  </footer>
 
 
-<script>
+  <script>
 
     /* ================================================================
    CSC ANNA NAGAR — Enhanced main.js
    Animations, scroll effects, navbar, counters
    ================================================================ */
 
-// ── Scroll Progress Bar ─────────────────────────────────────
-function initScrollProgress() {
-  const bar = document.createElement('div');
-  bar.className = 'scroll-progress';
-  document.body.prepend(bar);
-  window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    bar.style.width = Math.min(pct, 100) + '%';
-  }, { passive: true });
-}
+    // ── Scroll Progress Bar ─────────────────────────────────────
+    function initScrollProgress() {
+      const bar = document.createElement('div');
+      bar.className = 'scroll-progress';
+      document.body.prepend(bar);
+      window.addEventListener('scroll', () => {
+        const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = Math.min(pct, 100) + '%';
+      }, { passive: true });
+    }
 
-// ── Navbar scroll effect ────────────────────────────────────
-function initNavbar() {
-  const nav = document.querySelector('.navbar');
-  if (!nav) return;
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-}
+    // ── Navbar scroll effect ────────────────────────────────────
+    function initNavbar() {
+      const nav = document.querySelector('.navbar');
+      if (!nav) return;
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+      }, { passive: true });
+    }
 
-// ── Mobile menu toggle ──────────────────────────────────────
-function toggleMenu() {
-  const links = document.getElementById('navLinks');
-  if (links) links.classList.toggle('open');
-}
-// Close menu on outside click
-document.addEventListener('click', (e) => {
-  const links = document.getElementById('navLinks');
-  const toggle = document.querySelector('.mobile-toggle');
-  if (links && toggle && !links.contains(e.target) && !toggle.contains(e.target)) {
-    links.classList.remove('open');
-  }
-});
-
-// ── Popup functions ─────────────────────────────────────────
-function openDemoPopup() {
-  const popup = document.getElementById('demoPopup');
-  if (popup) {
-    popup.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-}
-function closeDemoPopup() {
-  const popup = document.getElementById('demoPopup');
-  if (popup) {
-    popup.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-}
-// Close on overlay click
-document.addEventListener('DOMContentLoaded', () => {
-  const popup = document.getElementById('demoPopup');
-  if (popup) {
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) closeDemoPopup();
-    });
-  }
-});
-// Close on ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeDemoPopup();
-});
-
-// ── Intersection Observer — Scroll Reveal ──────────────────
-function initScrollReveal() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+    // ── Mobile menu toggle ──────────────────────────────────────
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      if (links) links.classList.toggle('open');
+    }
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      const links = document.getElementById('navLinks');
+      const toggle = document.querySelector('.mobile-toggle');
+      if (links && toggle && !links.contains(e.target) && !toggle.contains(e.target)) {
+        links.classList.remove('open');
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  // Observe existing fade-up elements
-  document.querySelectorAll('.fade-up, .reveal, .reveal-left, .reveal-right, .stagger-children').forEach(el => {
-    observer.observe(el);
-  });
-
-  // Auto-add reveal class to sections
-  const sections = [
-    '.popular-courses',
-    '.workshops-preview',
-    '.reviews-section',
-    '.home-contact',
-    '.home-about-section',
-  ];
-  sections.forEach(sel => {
-    const el = document.querySelector(sel);
-    if (el && !el.classList.contains('fade-up')) {
-      el.classList.add('fade-up');
-      observer.observe(el);
+    // ── Popup functions ─────────────────────────────────────────
+    function openDemoPopup() {
+      const popup = document.getElementById('demoPopup');
+      if (popup) {
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
     }
-  });
-}
-
-// ── Animated Number Counter ─────────────────────────────────
-function animateCounter(el) {
-  const target = parseInt(el.getAttribute('data-target') || el.textContent, 10);
-  if (isNaN(target)) return;
-  const duration = 1800;
-  const step = 16;
-  const increment = target / (duration / step);
-  let current = 0;
-  const suffix = el.getAttribute('data-suffix') || '';
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      current = target;
-      clearInterval(timer);
+    function closeDemoPopup() {
+      const popup = document.getElementById('demoPopup');
+      if (popup) {
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+      }
     }
-    el.textContent = Math.floor(current).toLocaleString() + suffix;
-  }, step);
-}
-
-function initCounters() {
-  const counters = document.querySelectorAll('.stat-num, [data-counter]');
-  if (!counters.length) return;
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        obs.unobserve(entry.target);
+    // Close on overlay click
+    document.addEventListener('DOMContentLoaded', () => {
+      const popup = document.getElementById('demoPopup');
+      if (popup) {
+        popup.addEventListener('click', (e) => {
+          if (e.target === popup) closeDemoPopup();
+        });
       }
     });
-  }, { threshold: 0.5 });
-  counters.forEach(c => obs.observe(c));
-}
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDemoPopup();
+    });
 
-// ── Achievements Carousel ───────────────────────────────────
-function initCarousel() {
-  const track = document.querySelector('.carousel-track');
-  const container = document.querySelector('.carousel-track-container');
-  const btnLeft  = document.querySelector('.carousel-btn.left');
-  const btnRight = document.querySelector('.carousel-btn.right');
-  if (!track || !container) return;
+    // ── Intersection Observer — Scroll Reveal ──────────────────
+    function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  let index = 0;
-  const cards = track.children;
+      // Observe existing fade-up elements
+      document.querySelectorAll('.fade-up, .reveal, .reveal-left, .reveal-right, .stagger-children').forEach(el => {
+        observer.observe(el);
+      });
 
-  function getVisible() {
-    if (window.innerWidth <= 600) return 1;
-    if (window.innerWidth <= 992) return 2;
-    return 3;
-  }
+      // Auto-add reveal class to sections
+      const sections = [
+        '.popular-courses',
+        '.workshops-preview',
+        '.reviews-section',
+        '.home-contact',
+        '.home-about-section',
+      ];
+      sections.forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el && !el.classList.contains('fade-up')) {
+          el.classList.add('fade-up');
+          observer.observe(el);
+        }
+      });
+    }
 
-  function slide() {
-    const visible  = getVisible();
-    const cardW    = cards[0] ? cards[0].offsetWidth + 24 : 0;
-    const maxIndex = Math.max(0, cards.length - visible);
-    if (index > maxIndex) index = 0;
-    track.style.transform = `translateX(-${index * cardW}px)`;
-  }
+    // ── Animated Number Counter ─────────────────────────────────
+    function animateCounter(el) {
+      const target = parseInt(el.getAttribute('data-target') || el.textContent, 10);
+      if (isNaN(target)) return;
+      const duration = 1800;
+      const step = 16;
+      const increment = target / (duration / step);
+      let current = 0;
+      const suffix = el.getAttribute('data-suffix') || '';
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = Math.floor(current).toLocaleString() + suffix;
+      }, step);
+    }
 
-  if (btnLeft) btnLeft.addEventListener('click', () => {
-    index = index > 0 ? index - 1 : Math.max(0, cards.length - getVisible());
-    slide();
-  });
-  if (btnRight) btnRight.addEventListener('click', () => {
-    const maxIndex = Math.max(0, cards.length - getVisible());
-    index = index < maxIndex ? index + 1 : 0;
-    slide();
-  });
+    function initCounters() {
+      const counters = document.querySelectorAll('.stat-num, [data-counter]');
+      if (!counters.length) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(c => obs.observe(c));
+    }
 
-  // Auto-play carousel
-  let autoTimer = setInterval(() => {
-    const maxIndex = Math.max(0, cards.length - getVisible());
-    index = index < maxIndex ? index + 1 : 0;
-    slide();
-  }, 4000);
+    // ── Achievements Carousel ───────────────────────────────────
+    function initCarousel() {
+      const track = document.querySelector('.carousel-track');
+      const container = document.querySelector('.carousel-track-container');
+      const btnLeft = document.querySelector('.carousel-btn.left');
+      const btnRight = document.querySelector('.carousel-btn.right');
+      if (!track || !container) return;
 
-  container.addEventListener('mouseenter', () => clearInterval(autoTimer));
-  container.addEventListener('mouseleave', () => {
-    autoTimer = setInterval(() => {
-      const maxIndex = Math.max(0, cards.length - getVisible());
-      index = index < maxIndex ? index + 1 : 0;
+      let index = 0;
+      const cards = track.children;
+
+      function getVisible() {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 3;
+      }
+
+      function slide() {
+        const visible = getVisible();
+        const cardW = cards[0] ? cards[0].offsetWidth + 24 : 0;
+        const maxIndex = Math.max(0, cards.length - visible);
+        if (index > maxIndex) index = 0;
+        track.style.transform = `translateX(-${index * cardW}px)`;
+      }
+
+      if (btnLeft) btnLeft.addEventListener('click', () => {
+        index = index > 0 ? index - 1 : Math.max(0, cards.length - getVisible());
+        slide();
+      });
+      if (btnRight) btnRight.addEventListener('click', () => {
+        const maxIndex = Math.max(0, cards.length - getVisible());
+        index = index < maxIndex ? index + 1 : 0;
+        slide();
+      });
+
+      // Auto-play carousel
+      let autoTimer = setInterval(() => {
+        const maxIndex = Math.max(0, cards.length - getVisible());
+        index = index < maxIndex ? index + 1 : 0;
+        slide();
+      }, 4000);
+
+      container.addEventListener('mouseenter', () => clearInterval(autoTimer));
+      container.addEventListener('mouseleave', () => {
+        autoTimer = setInterval(() => {
+          const maxIndex = Math.max(0, cards.length - getVisible());
+          index = index < maxIndex ? index + 1 : 0;
+          slide();
+        }, 4000);
+      });
+
+      window.addEventListener('resize', slide, { passive: true });
       slide();
-    }, 4000);
-  });
-
-  window.addEventListener('resize', slide, { passive: true });
-  slide();
-}
-
-// ── Auto-dismiss messages ───────────────────────────────────
-function initMessages() {
-  document.querySelectorAll('.msg').forEach(msg => {
-    setTimeout(() => {
-      msg.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      msg.style.opacity    = '0';
-      msg.style.transform  = 'translateY(-10px)';
-      setTimeout(() => msg.remove(), 500);
-    }, 5000);
-  });
-}
-
-// ── Add section dividers dynamically ───────────────────────
-function initSectionDividers() {
-  // Add gold divider under section titles that don't have one yet
-  document.querySelectorAll('.section-title').forEach(el => {
-    if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('section-divider')) {
-      const div = document.createElement('div');
-      div.className = 'section-divider';
-      el.insertAdjacentElement('afterend', div);
     }
-  });
-}
 
-// ── Smooth hover card tilt effect ──────────────────────────
-function initCardTilt() {
-  document.querySelectorAll('.achievement-card, .workshop-card, .review-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect   = card.getBoundingClientRect();
-      const x      = (e.clientX - rect.left) / rect.width  - 0.5;
-      const y      = (e.clientY - rect.top)  / rect.height - 0.5;
-      card.style.transform = `translateY(-6px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+    // ── Auto-dismiss messages ───────────────────────────────────
+    function initMessages() {
+      document.querySelectorAll('.msg').forEach(msg => {
+        setTimeout(() => {
+          msg.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          msg.style.opacity = '0';
+          msg.style.transform = 'translateY(-10px)';
+          setTimeout(() => msg.remove(), 500);
+        }, 5000);
+      });
+    }
+
+    // ── Add section dividers dynamically ───────────────────────
+    function initSectionDividers() {
+      // Add gold divider under section titles that don't have one yet
+      document.querySelectorAll('.section-title').forEach(el => {
+        if (!el.nextElementSibling || !el.nextElementSibling.classList.contains('section-divider')) {
+          const div = document.createElement('div');
+          div.className = 'section-divider';
+          el.insertAdjacentElement('afterend', div);
+        }
+      });
+    }
+
+    // ── Smooth hover card tilt effect ──────────────────────────
+    function initCardTilt() {
+      document.querySelectorAll('.achievement-card, .workshop-card, .review-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `translateY(-6px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    }
+
+    // ── Init all ────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      initScrollProgress();
+      initNavbar();
+      initScrollReveal();
+      initCounters();
+      initCarousel();
+      initMessages();
+      initSectionDividers();
+      initCardTilt();
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-}
 
-// ── Init all ────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  initScrollProgress();
-  initNavbar();
-  initScrollReveal();
-  initCounters();
-  initCarousel();
-  initMessages();
-  initSectionDividers();
-  initCardTilt();
-});
-
-</script>
+  </script>
 
 </body>
+
 </html>
