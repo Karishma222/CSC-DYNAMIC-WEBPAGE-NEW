@@ -120,21 +120,21 @@
 
 .wk-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
     width: 100%;
-    min-height: 100vh;
+    min-height: 0;
     height: auto;
     overflow: visible;
 }
 
-.wk-left {
+/* .wk-left {
     background: #fff;
     min-width: 0;
     min-height: 0;
     height: auto;
     overflow: visible;
-}
+} */
 
 .wk-right {
     background: var(--tint);
@@ -144,6 +144,12 @@
     border-left: 1px solid var(--line);
     overflow: visible;
     position: static;
+}
+
+.wk-moments{
+    padding: 40px 36px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 /* ---------- Hero ---------- */

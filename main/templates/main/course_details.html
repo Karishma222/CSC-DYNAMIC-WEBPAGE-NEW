@@ -8,44 +8,32 @@
 {% endblock %}
 
 {% block content %}
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-    <a href="{% url 'home' %}">Home</a>
-    <span>›</span>
-    <a href="{% url 'courses' %}">Courses</a>
-    <span>›</span>
-    <span>{{ course.name }}</span>
-
-</h1>
-</div>
 
 <!-- COURSE HERO -->
-<section class="course-hero">
+<section class="cd-hero">
 
-    <div class="hero-content">
-        <span class="category-badge">SOFTWARE DEVELOPMENT</span>
+    <div class="cd-hero__content">
+        <span class="cd-badge">SOFTWARE DEVELOPMENT</span>
         <h1>{{ course.name }}</h1>
 
-        <p class="hero-description">
-            {{ course.description }}
-        </p>
+        <p class="cd-hero__desc">{{ course.description }}</p>
 
-        <div class="hero-features">
+        <div class="cd-hero__features">
             <span>✓ Practical Training</span>
             <span>✓ Industry-Relevant Skills</span>
             <span>✓ Project-Based Learning</span>
         </div>
     </div>
 
-    <div class="hero-image">
+    <div class="cd-hero__image">
         {% if course.image %}
             <img src="{{ course.image.url }}" alt="{{ course.name }}">
         {% else %}
-            <img src="{% static 'main/images/sample.webp' %}"
-                 alt="{{ course.name }}">
+            <img src="{% static 'main/images/sample.webp' %}" alt="{{ course.name }}">
         {% endif %}
-        
     </div>
+
+</section>
 
 </section>
 
