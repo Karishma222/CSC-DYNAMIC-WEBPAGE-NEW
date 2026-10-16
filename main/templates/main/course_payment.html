@@ -1,0 +1,136 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}UPI Payment | CSC{% endblock %}
+
+{% block extra_css %}
+<!-- Extra CSS for payment layout -->
+<link rel="stylesheet" href="{% static 'main/css/registration.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/payment.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- HERO STRIP -->
+    <section class="reg-hero">
+        <div class="reg-hero-inner">
+            <p class="reg-tag">REGISTRATION SUCCESSFUL</p>
+            <h1>Complete Your Payment</h1>
+            <p class="reg-sub">Pay using the CSC UPI QR code, then submit your transaction details for verification.</p>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <section class="reg-section">
+        <div class="reg-layout pay-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="pay-left">
+
+                <aside class="reg-summary pay-summary">
+                    <span class="reg-badge">YOUR BOOKING</span>
+                    <h2>{{ booking.course.name }}</h2>
+
+                    <div class="pay-ref">
+                        <span>Booking Reference</span>
+                        <strong>{{ booking.booking_ref }}</strong>
+                    </div>
+
+                    <div class="reg-fee">
+                        <span>Amount Payable</span>
+                        <strong>₹{{ booking.course.offer_fee }}</strong>
+                    </div>
+                </aside>
+
+                <div class="pay-card pay-tips">
+                    <h3>Before You Pay</h3>
+                    <ul>
+                        <li><span>1</span>Pay the exact amount shown above.</li>
+                        <li><span>2</span>Check the transaction status in your UPI app.</li>
+                        <li><span>3</span>Note your UPI transaction ID.</li>
+                        <li><span>4</span>Keep the payment screenshot ready.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="pay-right">
+
+                <!-- UPI CARD -->
+                <div class="pay-card pay-upi">
+                    <div class="pay-card-head">
+                        <h2>Pay via UPI</h2>
+                        <p>Scan the official CSC UPI QR code using your UPI app.</p>
+                    </div>
+
+                    <div class="pay-qr-wrap">
+                        <div class="pay-qr">
+                            <img src="{% static 'main/images/qr.jpeg' %}" alt="CSC UPI QR Code">
+                        </div>
+
+                        <div class="pay-upi-info">
+                            <span class="mini-label">UPI ID</span>
+                            <strong class="upi-id">REPLACE_WITH_CSC_UPI_ID</strong>
+
+                            <span class="mini-label">Amount</span>
+                            <strong class="upi-amount">₹{{ booking.course.offer_fee }}</strong>
+
+                            <div class="upi-apps">
+                                <span>Google Pay</span>
+                                <span>PhonePe</span>
+                                <span>Paytm</span>
+                                <span>BHIM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALREADY PAID FORM -->
+                <div class="pay-card pay-form-card">
+                    <h2>Already Paid?</h2>
+                    <p class="reg-form-note">Enter your UPI transaction ID and attach the payment screenshot.</p>
+
+                    <form method="post" enctype="multipart/form-data" class="reg-form" novalidate>
+                        {% csrf_token %}
+
+                        {{ form.non_field_errors }}
+
+                        {{ form.as_p }}
+
+                        <button type="submit" class="featured-btn">Submit for Verification →</button>
+                    </form>
+                </div>
+
+                <!-- IMPORTANT -->
+                <div class="pay-important">
+                    <span class="pay-important-icon">!</span>
+                    <div>
+                        <h3>Important</h3>
+                        <p>Your seat is confirmed only after we verify your payment. This usually takes a short time. Please keep your booking reference handy.</p>
+                    </div>
+                </div>
+
+                <!-- NEXT STEPS + HELP -->
+                <div class="pay-bottom">
+                    <div class="pay-card pay-steps">
+                        <h3>Next Steps</h3>
+                        <div class="step-track">
+                            <div class="step done"><i>✓</i><span>Registration<br>Submitted</span></div>
+                            <div class="step"><i></i><span>Payment<br>Verification</span></div>
+                            <div class="step"><i></i><span>Admission<br>Confirmed</span></div>
+                        </div>
+                    </div>
+
+                    <div class="pay-card pay-help">
+                        <h3>Need Help With Payment?</h3>
+                        <p>+91 XXXXX XXXXX</p>
+                        <div class="help-btns">
+                            <a href="tel:+91XXXXXXXXXX" class="help-call">Call CSC</a>
+                            <a href="https://wa.me/91XXXXXXXXXX" class="help-wa" target="_blank" rel="noopener">WhatsApp Us</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

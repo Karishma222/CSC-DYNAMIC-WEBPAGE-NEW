@@ -1,287 +1,240 @@
-/* ============================================================
-   Registration page — all classes prefixed .reg- (no clashes)
-   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 :root {
-    --reg-navy: #0b2a5b;
-    --reg-yellow: #f5c400;
-    --reg-yellow-dark: #e0b200;
-    --reg-text: #1a2233;
-    --reg-muted: #5b6577;
-    --reg-bg: #f4f7fb;
-    --reg-white: #ffffff;
-    --reg-border: #d9e0ec;
-    --reg-error: #c0392b;
-    --reg-success: #1e8449;
-    --reg-radius: 10px;
+    --navy: #171b61;
+    --navy-dark: #101344;
+    --yellow: #ffdc19;
+    --text: #20243a;
+    --muted: #687084;
+    --background: #f5f6fc;
+    --border: #e5e7ef;
 }
 
-.reg-page {
-    background: var(--reg-bg);
-    padding: 48px 16px 64px;
-    min-height: 100vh;
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.55;
 }
 
-.reg-card {
-    max-width: 760px;
-    margin: 0 auto;
-    background: var(--reg-white);
-    border-radius: 14px;
-    box-shadow: 0 12px 36px rgba(11, 42, 91, .12);
-    overflow: hidden;
-    border-top: 6px solid var(--reg-yellow);
-}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
 
-/* Header */
-.reg-header {
-    background: var(--reg-navy);
+/* TOP BAR */
+.top-bar {
+    background: var(--navy);
     color: #fff;
+    padding: 8px 5%;
+    font-size: 12px;
     text-align: center;
-    padding: 36px 28px 32px;
 }
 
-.reg-badge {
+/* HEADER */
+/* .site-header { background: #fff; border-bottom: 1px solid var(--border); }
+.navbar {
+    max-width: 1250px;
+    margin: auto;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+.logo img { width: 85px; height: 55px; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 22px; list-style: none; flex-wrap: wrap; }
+.nav-links a {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: color .2s, background .2s;
+}
+.nav-links a:hover { color: #6868db; }
+.nav-links a.active { background: var(--yellow); color: var(--navy); } */
+
+/* HERO STRIP */
+.reg-hero {
+    background: linear-gradient(120deg, #ffffff, #eef0ff);
+    border-bottom: 1px solid var(--border);
+    padding: 44px 25px;
+}
+.reg-hero-inner { max-width: 1200px; margin: auto; }
+.reg-tag {
     display: inline-block;
-    background: var(--reg-yellow);
-    color: var(--reg-navy);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 14px;
+    letter-spacing: 1.5px;
+    color: var(--navy);
+    border-bottom: 3px solid var(--yellow);
+    padding-bottom: 2px;
 }
-
-.reg-header h1 {
-    font-size: clamp(24px, 4vw, 34px);
-    line-height: 1.25;
-    margin: 0 0 10px;
+.reg-hero h1 {
+    font-size: clamp(30px, 4.5vw, 46px);
+    line-height: 1.15;
+    color: var(--navy);
     font-weight: 800;
-    color: #fff;
+    margin: 12px 0 8px;
 }
+.reg-sub { color: var(--muted); font-size: 15px; max-width: 520px; }
 
-.reg-highlight {
-    color: var(--reg-yellow);
-}
-
-.reg-header p {
-    margin: 0;
-    font-size: 14.5px;
-    opacity: .85;
-}
-
-/* Form */
-.reg-form {
-    padding: 32px 36px 36px;
-}
-
-.reg-section-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--reg-navy);
-    text-transform: uppercase;
-    letter-spacing: .8px;
-    margin: 28px 0 16px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--reg-border);
-}
-
-.reg-section-title:first-of-type {
-    margin-top: 0;
-}
-
-.reg-field {
-    margin-bottom: 18px;
-}
-
-.reg-field label,
-.reg-label {
-    display: block;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--reg-text);
-    margin-bottom: 6px;
-}
-
-.reg-field input[type="text"],
-.reg-field input[type="email"],
-.reg-field select,
-.reg-field textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 14px;
-    font-size: 14.5px;
-    font-family: inherit;
-    color: var(--reg-text);
-    background: #fff;
-    border: 1.5px solid var(--reg-border);
-    border-radius: var(--reg-radius);
-    transition: border-color .2s ease, box-shadow .2s ease;
-}
-
-.reg-field textarea {
-    resize: vertical;
-    min-height: 84px;
-}
-
-.reg-field select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230b2a5b' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    padding-right: 38px;
-    cursor: pointer;
-}
-
-.reg-field input::placeholder,
-.reg-field textarea::placeholder {
-    color: #9aa4b5;
-}
-
-.reg-field input:focus,
-.reg-field select:focus,
-.reg-field textarea:focus {
-    outline: none;
-    border-color: var(--reg-navy);
-    box-shadow: 0 0 0 3px rgba(11, 42, 91, .12);
-}
-
-/* Two-column grid */
-.reg-grid {
+/* MAIN LAYOUT */
+.reg-section { padding: 40px 20px 60px; }
+.reg-layout {
+    max-width: 1100px;
+    margin: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 20px;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 28px;
+    align-items: start;
 }
 
-/* Gender pills */
-.reg-radio-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.reg-radio {
-    position: relative;
-    margin: 0;
-    cursor: pointer;
-}
-
-.reg-radio input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.reg-radio span {
-    display: inline-block;
-    padding: 9px 22px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--reg-text);
-    border: 1.5px solid var(--reg-border);
-    border-radius: 30px;
-    transition: all .2s ease;
-}
-
-.reg-radio:hover span {
-    border-color: var(--reg-navy);
-}
-
-.reg-radio input:checked+span {
-    background: var(--reg-navy);
-    border-color: var(--reg-navy);
+/* LEFT: SUMMARY */
+.reg-summary {
+    background: var(--navy);
     color: #fff;
+    border-radius: 18px;
+    padding: 32px;
+    position: sticky;
+    top: 20px;
 }
-
-.reg-radio input:focus-visible+span {
-    box-shadow: 0 0 0 3px rgba(11, 42, 91, .2);
+.reg-badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--navy);
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 5px;
+    letter-spacing: .6px;
 }
-
-/* Messages & errors */
-.reg-messages {
-    margin-bottom: 18px;
+.reg-summary h2 {
+    font-size: 26px;
+    line-height: 1.25;
+    margin: 16px 0 22px;
+    font-weight: 800;
+    text-transform: uppercase;
 }
-
-.reg-msg {
-    margin: 0 0 8px;
-    padding: 12px 16px;
+.reg-fee {
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
 }
+.reg-fee span { display: block; font-size: 12px; color: #d8daf5; }
+.reg-fee strong { font-size: 36px; color: var(--yellow); font-weight: 800; }
 
-/* Messages (success / error) */
-.reg-messages {
-    margin-bottom: 16px;
+.reg-points { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 26px; }
+.reg-points li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #e1e4ff; }
+.reg-points li span {
+    width: 22px; height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
 }
+.reg-back { font-size: 13px; font-weight: 600; color: #d8daf5; }
+.reg-back:hover { color: var(--yellow); }
 
-.reg-msg {
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 14px;
-    font-weight: 500;
-    margin: 0 0 8px;
+/* RIGHT: FORM CARD */
+.reg-form-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 34px;
+    box-shadow: 0 8px 28px rgba(23, 27, 97, .06);
 }
+.reg-form-card h2 { font-size: 24px; color: var(--navy); font-weight: 800; }
+.reg-form-note { font-size: 13px; color: var(--muted); margin: 4px 0 24px; }
 
-.reg-msg-success {
-    background: #e8f8ee;
-    color: #15803d;
-    border-color: #86efac;
-}
+/* Django {{ form.as_p }} output: <p><label>..</label> <input></p> */
+.reg-form p { margin-bottom: 18px; display: flex; flex-direction: column; gap: 7px; }
+.reg-form label { font-size: 13px; font-weight: 700; color: var(--navy); }
 
-.reg-msg-error {
-    background: #fdecec;
-    color: #b91c1c;
-    border-color: #fca5a5;
-}
-
-/* Form validation errors list */
-.reg-errors {
-    list-style: none;
-    margin: 0 0 16px;
-    padding: 12px 16px;
-    background: #fdecec;
-    border: 1px solid #fca5a5;
-    border-radius: 8px;
-    color: #b91c1c;
-    font-size: 14px;
-}
-
-.reg-errors li {
-    margin: 4px 0;
-}
-
-.reg-submit {
+.reg-form input[type="text"],
+.reg-form input[type="email"],
+.reg-form input[type="tel"],
+.reg-form input[type="number"],
+.reg-form input[type="password"],
+.reg-form select,
+.reg-form textarea {
     width: 100%;
-    padding: 14px 20px;
-    margin-top: 8px;
+    padding: 13px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    background: #f8f9fe;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.reg-form textarea { min-height: 100px; resize: vertical; }
+.reg-form input::placeholder,
+.reg-form textarea::placeholder { color: #9aa0b4; }
+.reg-form input:focus,
+.reg-form select:focus,
+.reg-form textarea:focus {
+    background: #fff;
+    border-color: var(--navy);
+    box-shadow: 0 0 0 4px rgba(23, 27, 97, .10);
+}
 
-    background: var(--reg-yellow);
-    color: var(--reg-navy);
+/* Django errors + help text */
+.errorlist { list-style: none; margin-bottom: 8px; }
+.errorlist li {
+    background: #fdecec;
+    color: #b42318;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 7px;
+}
+.helptext { font-size: 11px; color: var(--muted); }
 
-    border: none;
-    border-radius: var(--reg-radius);
-
-    font-size: 16px;
-    font-weight: 700;
-
+/* BUTTON */
+.featured-btn {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 6px;
+    background: var(--yellow);
+    color: var(--navy);
+    border: 0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
     cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+.featured-btn:hover { background: #f2c900; transform: translateY(-1px); }
+.featured-btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 2px; }
 
-    transition: all 0.2s ease;
+.reg-secure { text-align: center; font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+/* FOOTER */
+.reg-footer {
+    background: var(--navy-dark);
+    color: #d8daf5;
+    text-align: center;
+    font-size: 12px;
+    padding: 18px 10px;
 }
 
-.reg-submit:hover {
-    background: var(--reg-yellow-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(11, 42, 91, 0.18);
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .reg-layout { grid-template-columns: 1fr; }
+    .reg-summary { position: static; }
 }
 
-.reg-submit:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
-
-.reg-submit:focus-visible {
-    outline: 3px solid rgba(11, 42, 91, 0.2);
-    outline-offset: 2px;
+@media (max-width: 700px) {
+    .navbar { flex-direction: column; gap: 10px; }
+    .nav-links { justify-content: center; gap: 8px 12px; }
+    .reg-hero { padding: 32px 18px; }
+    .reg-section { padding: 28px 12px 44px; }
+    .reg-summary, .reg-form-card { padding: 24px 20px; }
+    .reg-summary h2 { font-size: 22px; }
 }

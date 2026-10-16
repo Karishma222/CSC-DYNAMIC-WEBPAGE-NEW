@@ -4,242 +4,329 @@
 {% block title %}CSC - Courses{% endblock %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'main/css/courses.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'main/css/courses.css' %}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
 {% endblock %}
 
 
 {% block content %}
-<div class="courses-page">
 
-    <!-- HERO -->
-    <section class="cp-hero">
-        <div class="cp-hero-content">
-            <p class="cp-hero-tag">LEARN · PRACTICE · GROW</p>
-            <h1>Explore Our Courses</h1>
-            <p class="cp-hero-desc">
-                Learn industry-relevant skills through practical
-                training and real-world projects.
-            </p>
+<!-- HERO SECTION -->
+<section class="hero-section">
 
-            <div class="cp-search">
-                <input type="text" id="courseSearch" placeholder="Search courses..." autocomplete="off">
-                <button type="button" id="searchButton" aria-label="Search">🔍</button>
-            </div>
+    <div class="hero-content">
+
+        <p class="hero-small-text">LEARN · PRACTICE · GROW</p>
+
+        <h1 style="color: rgb(64, 16, 199) !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
+    Explore Our Courses
+</h1>
+
+         <h3 style="color: rgb(248, 244, 10) !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
+           Learn industry-relevant skills through practical
+            training and real-world projects.
+</h3>
+        <p class="hero-description">
+            Learn industry-relevant skills through practical
+            training and real-world projects.
+        </p>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="courseSearch"
+                placeholder="Search courses..."
+                autocomplete="off"
+            >
+            <button type="button" id="searchButton">🔍</button>
         </div>
 
-        <div class="cp-hero-image">
-            <img src="{% static 'main/images/sample.webp' %}" alt="Students learning programming">
-        </div>
-    </section>
-
-
-    <!-- FILTERS -->
-    <section class="course-filter">
-        <h2>Find the Right Course for You</h2>
-
-        <div class="filter-row">
-            <span class="filter-title">Category</span>
-            <button class="filter-btn active" data-filter="category" data-value="all">All Courses</button>
-            <button class="filter-btn" data-filter="category" data-value="Software Development">Software Development</button>
-            <button class="filter-btn" data-filter="category" data-value="Web Development">Web Development</button>
-            <button class="filter-btn" data-filter="category" data-value="Programming">Programming</button>
-            <button class="filter-btn" data-filter="category" data-value="UI / UX">UI / UX</button>
-            <button class="filter-btn" data-filter="category" data-value="Digital Marketing">Digital Marketing</button>
-            <button class="filter-btn" data-filter="category" data-value="Cloud Computing">Cloud Computing</button>
-            <button class="filter-btn" data-filter="category" data-value="Other">Other</button>
-        </div>
-
-        <div class="filter-row">
-            <span class="filter-title">Mode</span>
-            <button class="filter-btn active" data-filter="mode" data-value="all">All</button>
-            <button class="filter-btn" data-filter="mode" data-value="Online">Online</button>
-            <button class="filter-btn" data-filter="mode" data-value="Offline">Offline</button>
-            <button class="filter-btn" data-filter="mode" data-value="Hybrid">Hybrid</button>
-        </div>
-
-        <div class="filter-row">
-            <span class="filter-title">Level</span>
-            <button class="filter-btn active" data-filter="level" data-value="all">All</button>
-            <button class="filter-btn" data-filter="level" data-value="Beginner">Beginner</button>
-            <button class="filter-btn" data-filter="level" data-value="Intermediate">Intermediate</button>
-            <button class="filter-btn" data-filter="level" data-value="Advanced">Advanced</button>
-        </div>
-    </section>
-
-
-    <!-- COURSE CARDS -->
-    <section class="courses-section">
-        <div class="course-grid">
-
-            <article class="course-card" data-course="Python Full Stack Development"
-                     data-category="Software Development" data-mode="Online" data-level="Beginner">
-                <div class="course-image">
-                    <img src="{% static 'main/images/python.webp' %}" alt="Python Full Stack Development">
-                </div>
-                <div class="course-content">
-                    <span class="category">SOFTWARE DEVELOPMENT</span>
-                    <h3>Python Full Stack Development</h3>
-                    <p>Build your future with Python, frontend, backend and full stack development skills.</p>
-                    <div class="course-info">Practical Training | Beginner</div>
-                    <a href="#" class="view-course" data-course-id="python">View Course →</a>
-                </div>
-            </article>
-
-            <article class="course-card" data-course="Web Development"
-                     data-category="Web Development" data-mode="Online" data-level="Beginner">
-                <div class="course-image">
-                    <img src="{% static 'main/images/web.webp' %}" alt="Web Development">
-                </div>
-                <div class="course-content">
-                    <span class="category">WEB DEVELOPMENT</span>
-                    <h3>Web Development</h3>
-                    <p>Learn frontend, backend, web development and modern web technologies.</p>
-                    <div class="course-info">Practical Training | Beginner</div>
-                    <a href="#" class="view-course" data-course-id="web">View Course →</a>
-                </div>
-            </article>
-
-            <article class="course-card" data-course="Java Programming"
-                     data-category="Programming" data-mode="Offline" data-level="Intermediate">
-                <div class="course-image">
-                    <img src="{% static 'main/images/java.webp' %}" alt="Java Programming">
-                </div>
-                <div class="course-content">
-                    <span class="category">PROGRAMMING</span>
-                    <h3>Java Programming</h3>
-                    <p>Learn Java programming, object-oriented concepts and application development.</p>
-                    <div class="course-info">Practical Training | Intermediate</div>
-                    <a href="#" class="view-course" data-course-id="java">View Course →</a>
-                </div>
-            </article>
-
-            <article class="course-card" data-course="UI / UX Design"
-                     data-category="UI / UX" data-mode="Online" data-level="Beginner">
-                <div class="course-image">
-                    <img src="{% static 'main/images/uiux.webp' %}" alt="UI UX Design">
-                </div>
-                <div class="course-content">
-                    <span class="category">UI / UX</span>
-                    <h3>UI / UX Design</h3>
-                    <p>Learn modern interface design and user experience principles.</p>
-                    <div class="course-info">Practical Training | Beginner</div>
-                    <a href="#" class="view-course" data-course-id="uiux">View Course →</a>
-                </div>
-            </article>
-
-            <article class="course-card" data-course="Cloud Computing"
-                     data-category="Cloud Computing" data-mode="Hybrid" data-level="Intermediate">
-                <div class="course-image">
-                    <img src="{% static 'main/images/cloud.webp' %}" alt="Cloud Computing">
-                </div>
-                <div class="course-content">
-                    <span class="category">CLOUD COMPUTING</span>
-                    <h3>Cloud Computing</h3>
-                    <p>Learn cloud technologies, deployment and modern cloud infrastructure.</p>
-                    <div class="course-info">Practical Training | Intermediate</div>
-                    <a href="#" class="view-course" data-course-id="cloud">View Course →</a>
-                </div>
-            </article>
-
-            <article class="course-card" data-course="Digital Marketing"
-                     data-category="Digital Marketing" data-mode="Online" data-level="Beginner">
-                <div class="course-image">
-                    <img src="{% static 'main/images/digital.webp' %}" alt="Digital Marketing">
-                </div>
-                <div class="course-content">
-                    <span class="category">DIGITAL MARKETING</span>
-                    <h3>Digital Marketing</h3>
-                    <p>Learn SEO, social media marketing, content and digital strategies.</p>
-                    <div class="course-info">Practical Training | Beginner</div>
-                    <a href="#" class="view-course" data-course-id="digital">View Course →</a>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-
-    <!-- COURSE DETAILS MODAL -->
-    <div id="courseModal" class="course-modal">
-        <div class="course-modal-content">
-            <button class="close-modal" type="button">&times;</button>
-
-            <div class="modal-image">
-                <img id="modalCourseImage" src="" alt="Course">
-            </div>
-
-            <div class="modal-details">
-                <span class="modal-label">COURSE DETAILS</span>
-                <h2 id="modalCourseTitle">Course Title</h2>
-                <p id="modalCourseDescription">Course description</p>
-
-                <div class="course-meta">
-                    <div><strong>Category</strong><span id="modalCourseCategory"></span></div>
-                    <div><strong>Mode</strong><span id="modalCourseMode"></span></div>
-                    <div><strong>Level</strong><span id="modalCourseLevel"></span></div>
-                    <div><strong>Duration</strong><span id="modalCourseDuration"></span></div>
-                </div>
-
-                <button class="book-course-btn" type="button">Book This Course →</button>
-            </div>
-        </div>
     </div>
 
+    <div class="hero-image">
+        <img
+            src="{% static 'main/images/man.webp' %}"
+            alt="Students learning programming"
+        >
+    </div>
 
-    <!-- FEATURED COURSE -->
-    <section class="cp-featured">
-        <div class="cp-featured-content">
-            <span class="cp-featured-label">FEATURED COURSE</span>
-            <h2>Python Full Stack Development</h2>
+</section>
+
+
+<!-- COURSE FILTERS -->
+<section class="course-filter">
+
+    <h2>Find the Right Course for You</h2>
+
+    <!-- CATEGORY FILTER -->
+    <div class="filter-row">
+        <span class="filter-title">Category</span>
+
+        <button type="button" class="filter-btn active"
+                data-filter="category" data-value="all">All Courses</button>
+        <button type="button" class="filter-btn"
+                data-filter="category" data-value="Software Development">Software Development</button>
+        <button type="button" class="filter-btn"
+                data-filter="category" data-value="Web Development">Web Development</button>
+        <button type="button" class="filter-btn"
+                data-filter="category" data-value="Programming">Programming</button>
+        <button type="button" class="filter-btn"
+                data-filter="category" data-value="UI / UX">UI / UX</button>
+        <button type="button" class="filter-btn"
+                data-filter="category" data-value="Digital Marketing">Digital Marketing</button>
+        <button type="button" class="filter-btn"
+                data-filter="category" data-value="Cloud Computing">Cloud Computing</button>
+    </div>
+
+    <!-- MODE FILTER -->
+    <div class="filter-row">
+        <span class="filter-title">Mode</span>
+
+        <button type="button" class="filter-btn active"
+                data-filter="mode" data-value="all">All</button>
+        <button type="button" class="filter-btn"
+                data-filter="mode" data-value="Online">Online</button>
+        <button type="button" class="filter-btn"
+                data-filter="mode" data-value="Offline">Offline</button>
+        <button type="button" class="filter-btn"
+                data-filter="mode" data-value="Hybrid">Hybrid</button>
+    </div>
+
+    <!-- LEVEL FILTER -->
+    <div class="filter-row">
+        <span class="filter-title">Level</span>
+
+        <button type="button" class="filter-btn active"
+                data-filter="level" data-value="all">All</button>
+        <button type="button" class="filter-btn"
+                data-filter="level" data-value="Beginner">Beginner</button>
+        <button type="button" class="filter-btn"
+                data-filter="level" data-value="Intermediate">Intermediate</button>
+        <button type="button" class="filter-btn"
+                data-filter="level" data-value="Advanced">Advanced</button>
+    </div>
+
+</section>
+
+
+<!-- COURSE CARDS -->
+<section class="courses-section">
+
+    <div class="course-grid">
+
+        {% for course in courses %}
+
+        <!-- CHANGED: real values from database -->
+        <article
+            class="course-card"
+            data-course="{{ course.name|escape }}"
+            data-category="{{ course.category }}"
+            data-mode="{{ course.mode }}"
+            data-level="{{ course.level }}"
+        >
+
+            <!-- COURSE IMAGE -->
+            <div class="course-image">
+                {% if course.image %}
+                    <img src="{{ course.image.url }}" alt="{{ course.name }}">
+                {% else %}
+                    <img src="{% static 'main/images/sample.webp' %}"
+                         alt="{{ course.name }}">
+                {% endif %}
+            </div>
+
+            <!-- COURSE CONTENT -->
+            <div class="course-content">
+
+                <!-- CHANGED: shows real category -->
+                <span class="category">{{ course.category }}</span>
+
+                <h3>{{ course.name }}</h3>
+
+                <p>{{ course.description|truncatewords:22 }}</p>
+
+                <div class="course-info">
+                    Duration: {{ course.duration }}
+                </div>
+
+                <div class="course-info">
+                    Fee: ₹{{ course.offer_fee }}
+
+                    {% if course.original_fee > course.offer_fee %}
+                        <del>₹{{ course.original_fee }}</del>
+                    {% endif %}
+                </div>
+
+                <a href="{% url 'course_detail' course.id %}"
+                   class="view-details-btn">
+                    View Details →
+                </a>
+
+            </div>
+
+        </article>
+
+        {% empty %}
+
+        <!-- NO COURSES AVAILABLE -->
+        <div class="no-courses">
+            <h3>No courses available right now.</h3>
             <p>
-                Build your future with practical training, real-world projects,
-                technology skills and career guidance.
+                Please check back later or contact CSC
+                for course details.
             </p>
-            <a href="#" class="cp-featured-btn">View Course →</a>
+            <a href="{% url 'contact' %}">Contact Us</a>
         </div>
 
-        <div class="cp-featured-image">
-            <img src="{% static 'main/images/python.webp' %}" alt="Python Full Stack Course">
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- FEATURED COURSE -->
+<section class="featured-section">
+
+    <div class="featured-content">
+
+        <span class="featured-label">FEATURED COURSE</span>
+
+        <h2>Python Full Stack Development</h2>
+
+        <p>
+            Build your future with practical training,
+            real-world projects, technology skills
+            and career guidance.
+        </p>
+
+        <a href="{% url 'courses' %}" class="featured-btn">
+            Explore Courses →
+        </a>
+
+    </div>
+
+    <div class="featured-image">
+        <img
+            src="{% static 'main/images/python.webp' %}"
+            alt="Python Full Stack Course"
+        >
+    </div>
+
+</section>
+
+
+<!-- WHAT YOU CAN EXPECT -->
+<section class="expect-section">
+
+    <h2>What You Can Expect</h2>
+
+    <div class="expect-grid">
+
+        <div class="expect-card">
+            <div class="expect-icon">🎓</div>
+            <h3>Practical Learning</h3>
         </div>
-    </section>
 
-
-    <!-- WHAT YOU CAN EXPECT -->
-    <section class="cp-expect">
-        <h2>What You Can Expect</h2>
-
-        <div class="cp-expect-grid">
-            <div class="cp-expect-card">
-                <div class="cp-expect-icon">🎓</div>
-                <h3>Practical Learning</h3>
-            </div>
-            <div class="cp-expect-card">
-                <div class="cp-expect-icon">📝</div>
-                <h3>Project-Based Practice</h3>
-            </div>
-            <div class="cp-expect-card">
-                <div class="cp-expect-icon">👨‍🏫</div>
-                <h3>Technical Guidance</h3>
-            </div>
-            <div class="cp-expect-card">
-                <div class="cp-expect-icon">💼</div>
-                <h3>Career Preparation</h3>
-            </div>
+        <div class="expect-card">
+            <div class="expect-icon">📝</div>
+            <h3>Project-Based Practice</h3>
         </div>
-    </section>
+
+        <div class="expect-card">
+            <div class="expect-icon">👨‍🏫</div>
+            <h3>Technical Guidance</h3>
+        </div>
+
+        <div class="expect-card">
+            <div class="expect-icon">💼</div>
+            <h3>Career Preparation</h3>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- CTA -->
-    <section class="cp-cta">
+<!-- CALL TO ACTION -->
+<section class="cta-section">
+
+    <div class="cta-content">
+
         <h2>Not Sure Which Course to Choose?</h2>
-        <p>Explore your options with us and find the right technology course.</p>
-        <a href="#" class="cp-cta-btn">Talk to Us →</a>
-    </section>
 
-</div>
+        <p>
+            Explore your options with us and find
+            the right technology course.
+        </p>
 
-<script src="{% static 'main/js/courses.js' %}"></script>
+        <a href="{% url 'contact' %}" class="cta-btn">
+            Talk to Us →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- COURSE PAGE JAVASCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var cards = document.querySelectorAll(".course-card");
+    var input = document.getElementById("courseSearch");
+    var searchBtn = document.getElementById("searchButton");
+    var buttons = document.querySelectorAll(".filter-btn");
+    var grid = document.querySelector(".course-grid");
+    var filters = { category: "all", mode: "all", level: "all" };
+
+    var noResult = document.createElement("div");
+    noResult.className = "no-courses";
+    noResult.style.display = "none";
+    noResult.innerHTML = "<h3>No courses found.</h3><p>Try a different keyword or filter.</p>";
+    grid.appendChild(noResult);
+
+    function norm(v) { return (v || "").trim().toLowerCase(); }
+
+    function applyFilters() {
+        var q = input ? norm(input.value) : "";
+        var visible = 0;
+
+        cards.forEach(function (card) {
+            var p = card.querySelector("p");
+            var text = norm(card.dataset.course) + " " + (p ? norm(p.textContent) : "");
+
+            var show =
+                text.includes(q) &&
+                (filters.category === "all" || norm(card.dataset.category) === filters.category) &&
+                (filters.mode === "all" || norm(card.dataset.mode) === filters.mode) &&
+                (filters.level === "all" || norm(card.dataset.level) === filters.level);
+
+            card.style.display = show ? "" : "none";
+            if (show) visible++;
+        });
+
+        noResult.style.display = (visible === 0 && cards.length > 0) ? "block" : "none";
+    }
+
+    buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            var type = btn.dataset.filter;
+            filters[type] = norm(btn.dataset.value);
+            document.querySelectorAll('.filter-btn[data-filter="' + type + '"]')
+                .forEach(function (b) { b.classList.remove("active"); });
+            btn.classList.add("active");
+            applyFilters();
+        });
+    });
+
+    if (input) input.addEventListener("input", applyFilters);
+    if (searchBtn) searchBtn.addEventListener("click", applyFilters);
+    applyFilters();
+});
+</script>
 {% endblock %}

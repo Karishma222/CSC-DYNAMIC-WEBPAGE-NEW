@@ -1,7 +1,10 @@
 from django import forms
-from .models import DemoRequest, ContactMessage, SatBooking
+from .models import (
+    DemoRequest, ContactMessage, JobApplication, 
+    CourseBooking, WorkshopRegistration, SatBooking
+)
 
-
+# TN Districts list from RP
 TN_DISTRICTS = [
     "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore",
     "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kancheepuram",
@@ -13,22 +16,14 @@ TN_DISTRICTS = [
     "Tiruppur", "Tiruvannamalai", "Vellore", "Viluppuram", "Virudhunagar",
 ]
 
+
 class DemoForm(forms.ModelForm):
     class Meta:
         model = DemoRequest
-        fields = ['name','mobile','email','description']
+        fields = ['name', 'mobile', 'email', 'description']
         widgets = {
-        'description': forms.Textarea(attrs={'rows':3}),
+            'description': forms.Textarea(attrs={'rows': 3}),
         }
-
-
-# class ContactForm(forms.ModelForm):
-#     class Meta:
-#         model = ContactMessage
-#         fields = ['name','email','message']
-#         widgets = {
-#         'message': forms.Textarea(attrs={'rows':4}),
-#         }
 
 
 class ContactForm(forms.ModelForm):
@@ -54,16 +49,9 @@ class ContactForm(forms.ModelForm):
                 'id': 'id_message',
             }),
         }
-        
-        
-# ── Add to your existing forms.py ─────────────────────────────────────────
-
-from django import forms
-from .models import JobApplication
 
 
 class JobApplicationForm(forms.ModelForm):
-
     name = forms.CharField(
         widget=forms.TextInput(attrs={
             'placeholder': 'Your Full Name',
@@ -112,18 +100,12 @@ class JobApplicationForm(forms.ModelForm):
     )
 
     class Meta:
-        model  = JobApplication
+        model = JobApplication
         fields = [
             'name', 'email', 'mobile',
             'highest_qualification', 'passed_out_year',
             'resume', 'cover_letter',
         ]
-        
-        
-# ── Add to your existing forms.py ────────────────────────────────────────
-
-from django import forms
-from .models import CourseBooking
 
 
 class CourseBookingForm(forms.ModelForm):
@@ -148,8 +130,40 @@ class CourseBookingForm(forms.ModelForm):
     )
 
     class Meta:
-        model  = CourseBooking
+        model = CourseBooking
         fields = ['student_name', 'email', 'mobile']
+
+
+class PaymentSubmissionForm(forms.ModelForm):
+    transaction_id = forms.CharField(
+        max_length=100,
+        label="UPI Transaction ID",
+        widget=forms.TextInput(attrs={
+            'placeholder': 'Enter UPI transaction ID',
+            'class': 'b-input',
+            'required': True,
+        })
+    )
+
+    payment_proof = forms.ImageField(
+        required=False,
+        label="Payment Screenshot (Optional)"
+    )
+
+    class Meta:
+        model = CourseBooking
+        fields = ['transaction_id', 'payment_proof']
+
+
+class WorkshopRegistrationForm(forms.ModelForm):
+    class Meta:
+        model = WorkshopRegistration
+        fields = ['name', 'email', 'mobile']
+        widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Your full name'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'you@example.com'}),
+            'mobile': forms.TextInput(attrs={'placeholder': '10-digit mobile number'}),
+        }
 
 
 class SatBookingForm(forms.ModelForm):
@@ -160,8 +174,10 @@ class SatBookingForm(forms.ModelForm):
             "invalid_choice": "Please select a valid Tamil Nadu district.",
         },
     )
+
     class Meta:
-        model  = SatBooking
-        fields = ['name', 'address', 'gender', 'qualification',
-                  'district', 'area', 'timing', 'mobile', 'email']
-                  
+        model = SatBooking
+        fields = [
+            'name', 'address', 'gender', 'qualification',
+            'district', 'area', 'timing', 'mobile', 'email'
+        ]

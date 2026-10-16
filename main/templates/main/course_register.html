@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Course Registration | CSC{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/registration.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- HERO STRIP -->
+    <section class="reg-hero">
+        <div class="reg-hero-inner">
+            <p class="reg-tag">COURSE REGISTRATION</p>
+            <h1>Student Registration</h1>
+            <p class="reg-sub">Fill in your details to reserve your seat and continue to payment.</p>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <section class="reg-section">
+        <div class="reg-layout">
+
+            <!-- LEFT: COURSE SUMMARY -->
+            <aside class="reg-summary">
+                <span class="reg-badge">SELECTED COURSE</span>
+                <h2>{{ course.name }}</h2>
+
+                <div class="reg-fee">
+                    <span>Course Fee</span>
+                    <strong>₹{{ course.offer_fee }}</strong>
+                </div>
+
+                <ul class="reg-points">
+                    <li><span>✓</span>Practical, hands-on training</li>
+                    <li><span>✓</span>Industry-ready projects</li>
+                    <li><span>✓</span>Placement support</li>
+                    <li><span>✓</span>Certificate on completion</li>
+                </ul>
+
+                <a href="javascript:history.back()" class="reg-back">← Back to course details</a>
+            </aside>
+
+            <!-- RIGHT: FORM -->
+            <div class="reg-form-card">
+                <h2>Your Details</h2>
+                <p class="reg-form-note">Please enter correct details. We will use them to contact you.</p>
+
+                <form method="post" class="reg-form" novalidate>
+                    {% csrf_token %}
+
+                    {{ form.non_field_errors }}
+
+                    {{ form.as_p }}
+
+                    <button type="submit" class="featured-btn">Continue to Payment →</button>
+                </form>
+
+                <p class="reg-secure">🔒 Your information is safe with us.</p>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

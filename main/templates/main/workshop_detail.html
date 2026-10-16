@@ -1,0 +1,99 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}{{ w.title }} | CSC Workshops{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/workshop.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wk">
+<div class="wk-layout">
+
+  <!-- ================= LEFT ================= -->
+  <div class="wk-left">
+
+    <!-- HERO -->
+    <section class="wk-hero">
+      <div class="wk-hero__img">
+        {% if w.image %}
+          <img src="{{ w.image.url }}" alt="{{ w.title }}">
+        {% else %}
+          <img src="{% static 'main/images/workshop-hero.jpg' %}" alt="" onerror="this.style.display='none'">
+        {% endif %}
+      </div>
+
+      <div class="wk-hero__text">
+        <a href="{% url 'workshop' %}" class="wk-back">&larr; All Workshops</a>
+        <span class="wk-eyebrow">WORKSHOP DETAILS</span>
+        <h1>{{ w.title }}</h1>
+        <p>{{ w.short_description }}</p>
+
+        <ul class="wk-pills">
+          <li>&#128197; {{ w.date|date:"d M Y" }}</li>
+          <li>&#128339; {{ w.start_time|time:"h:i A" }} – {{ w.end_time|time:"h:i A" }}</li>
+          <li>&#128205; {{ w.mode }}</li>
+        </ul>
+
+        {% if w.seats_left == 0 %}
+          <span class="wk-full wk-full--block">Seats Full</span>
+        {% else %}
+          <a href="{% url 'workshop_register' w.id %}" class="wk-btn wk-btn--navy">Register Now &rarr;</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="wk-section">
+      <h2 class="wk-title wk-title--left">About This Workshop</h2>
+      <div class="wk-about">
+        {% if w.description %}
+          <p>{{ w.description|linebreaksbr }}</p>
+        {% else %}
+          <p>{{ w.short_description }}</p>
+        {% endif %}
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= RIGHT ================= -->
+  <aside class="wk-right">
+
+    <section class="wk-panel">
+      <h2 class="wk-title">Workshop Info</h2>
+      <p class="wk-sub">Everything you need to know before you register.</p>
+
+      <div class="wk-infocard">
+        <div class="wk-infocard__date">
+          <b>{{ w.date|date:"d" }}</b>
+          <span>{{ w.date|date:"M Y" }}</span>
+          <small>{{ w.date|date:"l" }}</small>
+        </div>
+
+        <ul>
+          <li><span>Time</span><b>{{ w.start_time|time:"h:i A" }} – {{ w.end_time|time:"h:i A" }}</b></li>
+          <li><span>Mode</span><b>{{ w.mode }}</b></li>
+          {% if w.venue %}<li><span>Venue</span><b>{{ w.venue }}</b></li>{% endif %}
+          {% if w.seats_left != None %}<li><span>Seats left</span><b>{{ w.seats_left }}</b></li>{% endif %}
+        </ul>
+
+        {% if w.seats_left == 0 %}
+          <span class="wk-full wk-full--block">Seats Full</span>
+        {% else %}
+          <a href="{% url 'workshop_register' w.id %}" class="wk-btn wk-btn--yellow wk-btn--block">Register Now &rarr;</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="wk-join">
+      <h2>Want to Join Our Next Workshop?</h2>
+      <p>Stay connected with CSC for upcoming workshops and learning opportunities.</p>
+      <a href="{% url 'contact' %}" class="wk-btn wk-btn--yellow">Contact Us &rarr;</a>
+    </section>
+
+  </aside>
+
+</div>
+</div>
+{% endblock %}

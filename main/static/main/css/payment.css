@@ -1,0 +1,187 @@
+/* PAYMENT PAGE - extra styles (load after registration.css) */
+
+.pay-layout {
+    max-width: 1150px;
+    grid-template-columns: 0.8fr 1.2fr;
+}
+
+.pay-left,
+.pay-right {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    min-width: 0;
+}
+
+.pay-left { position: sticky; top: 20px; }
+.pay-summary { position: static; }
+
+/* shared white card */
+.pay-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 8px 28px rgba(23, 27, 97, .06);
+}
+.pay-card h2 { font-size: 22px; color: var(--navy); font-weight: 800; }
+.pay-card h3 { font-size: 16px; color: var(--navy); font-weight: 800; margin-bottom: 12px; }
+
+/* booking reference box */
+.pay-ref {
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+}
+.pay-ref span { display: block; font-size: 12px; color: #d8daf5; }
+.pay-ref strong { font-size: 18px; letter-spacing: .5px; word-break: break-all; }
+
+/* before you pay */
+.pay-tips ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.pay-tips li { display: flex; align-items: center; gap: 12px; font-size: 13.5px; }
+.pay-tips li span {
+    width: 24px; height: 24px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--navy);
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* UPI card */
+.pay-card-head { text-align: center; margin-bottom: 18px; }
+.pay-card-head p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.pay-qr-wrap {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 26px;
+    align-items: center;
+}
+.pay-qr {
+    width: 220px;
+    padding: 12px;
+    background: #fff;
+    border: 2px solid var(--navy);
+    border-radius: 16px;
+}
+.pay-qr img { width: 100%; height: auto; }
+
+.pay-upi-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.pay-upi-info .mini-label { font-size: 11px; color: var(--muted); margin-top: 10px; }
+.upi-id { font-size: 16px; color: var(--navy); word-break: break-all; }
+.upi-amount { font-size: 32px; color: var(--navy); font-weight: 800; }
+
+.upi-apps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.upi-apps span {
+    font-size: 11px; font-weight: 700;
+    color: var(--navy);
+    background: #eef0ff;
+    border-radius: 20px;
+    padding: 5px 12px;
+}
+
+/* form extras (file input) */
+.pay-form-card .reg-form-note { margin-bottom: 20px; }
+.reg-form input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    background: #f8f9fe;
+    border: 1.5px dashed #b9bde0;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.reg-form input[type="file"]::file-selector-button {
+    background: var(--navy);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    padding: 7px 14px;
+    margin-right: 12px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* important banner */
+.pay-important {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 14px;
+    padding: 20px 24px;
+}
+.pay-important-icon {
+    width: 28px; height: 28px; flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--yellow);
+    color: var(--navy);
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+}
+.pay-important h3 { color: var(--yellow); margin-bottom: 4px; }
+.pay-important p { font-size: 13px; color: #e1e4ff; }
+
+/* next steps + help */
+.pay-bottom {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 22px;
+}
+.step-track { display: flex; justify-content: space-between; position: relative; }
+.step-track::before {
+    content: "";
+    position: absolute;
+    top: 13px; left: 14%; right: 14%;
+    height: 3px;
+    background: var(--border);
+}
+.step { position: relative; z-index: 1; flex: 1; text-align: center; }
+.step i {
+    display: flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px;
+    margin: 0 auto 8px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--border);
+    font-style: normal; font-size: 13px; font-weight: 800;
+}
+.step span { font-size: 11px; font-weight: 600; color: var(--muted); line-height: 1.3; display: block; }
+.step.done i { background: var(--yellow); border-color: var(--navy); color: var(--navy); }
+.step.done span { color: var(--navy); }
+
+.pay-help p { font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+.help-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.help-call, .help-wa {
+    flex: 1;
+    text-align: center;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+.help-call { background: var(--yellow); color: var(--navy); }
+.help-wa { background: #25a85a; color: #fff; }
+.help-call:hover { background: #f2c900; }
+.help-wa:hover { background: #1e8f4c; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .pay-layout { grid-template-columns: 1fr; }
+    .pay-left { position: static; }
+}
+
+@media (max-width: 700px) {
+    .pay-card { padding: 22px 18px; }
+    .pay-qr-wrap { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .pay-upi-info { align-items: center; }
+    .upi-apps { justify-content: center; }
+    .pay-bottom { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,87 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Register | {{ w.title }} | CSC Workshops{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/workshop.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wk">
+<div class="wk-layout">
+
+  <!-- ================= LEFT ================= -->
+  <div class="wk-left">
+
+    <!-- HERO -->
+    <section class="wk-hero wk-hero--short">
+      <div class="wk-hero__img">
+        {% if w.image %}
+          <img src="{{ w.image.url }}" alt="{{ w.title }}">
+        {% else %}
+          <img src="{% static 'main/images/workshop-hero.jpg' %}" alt="" onerror="this.style.display='none'">
+        {% endif %}
+      </div>
+
+      <div class="wk-hero__text">
+        <a href="{% url 'workshop_detail' w.id %}" class="wk-back">&larr; Back to workshop</a>
+        <span class="wk-eyebrow">WORKSHOP REGISTRATION</span>
+        <h1>Reserve Your Seat</h1>
+        <p>Fill in your details and our team will confirm your registration.</p>
+      </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="wk-section">
+      <div class="wk-formcard">
+        <h2>Your Details</h2>
+        <p class="wk-formcard__note">Please enter correct details. We will contact you to confirm.</p>
+
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          {{ form.as_p }}
+          <button type="submit" class="wk-btn wk-btn--yellow wk-btn--block">Confirm My Seat &rarr;</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= RIGHT ================= -->
+  <aside class="wk-right">
+
+    <section class="wk-panel">
+      <h2 class="wk-title">Selected Workshop</h2>
+      <p class="wk-sub">You are registering for this workshop.</p>
+
+      <div class="wk-sel">
+        <div class="wk-sel__img">
+          {% if w.image %}<img src="{{ w.image.url }}" alt="{{ w.title }}">{% endif %}
+          <div class="wk-date"><b>{{ w.date|date:"d" }}</b><span>{{ w.date|date:"M" }}</span></div>
+          <span class="wk-tag">UPCOMING</span>
+        </div>
+        <div class="wk-sel__body">
+          <h3>{{ w.title }}</h3>
+          <ul>
+            <li><span>Date</span><b>{{ w.date|date:"d M Y" }}</b></li>
+            <li><span>Time</span><b>{{ w.start_time|time:"h:i A" }} – {{ w.end_time|time:"h:i A" }}</b></li>
+            <li><span>Mode</span><b>{{ w.mode }}</b></li>
+            {% if w.venue %}<li><span>Venue</span><b>{{ w.venue }}</b></li>{% endif %}
+            {% if w.seats_left != None %}<li><span>Seats left</span><b>{{ w.seats_left }}</b></li>{% endif %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="wk-join">
+      <h2>Need Help Registering?</h2>
+      <p>Call or message CSC and our team will help you.</p>
+      <a href="{% url 'contact' %}" class="wk-btn wk-btn--yellow">Contact Us &rarr;</a>
+    </section>
+
+  </aside>
+
+</div>
+</div>
+{% endblock %}

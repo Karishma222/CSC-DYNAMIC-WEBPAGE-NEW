@@ -80,6 +80,26 @@
       </li>
 
       <li>
+        <a href="{% url 'workshop' %}" class="{% if request.resolver_match.url_name == 'workshop' %}active{% endif %}">
+          Workshop
+        </a>
+      </li>
+
+
+      <li>
+        <a href="{% url 'inspiration' %}" class="{% if request.resolver_match.url_name == 'inspiration' %}active{% endif %}">
+          Inspiration
+        </a>
+      </li>
+
+       <li>
+        <a href="{% url 'placement' %}" class="{% if request.resolver_match.url_name == 'placement' %}active{% endif %}">
+          Placement
+        </a>
+      </li>
+
+
+      <li>
         <a href="{% url 'contact' %}" class="nav-btn">
           Contact
         </a>

@@ -1,0 +1,343 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Inspiration | CSC Computer Software College{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'main/css/inspiration.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- INSPIRATION HERO -->
+
+<section class="inspiration-hero">
+
+    <div class="hero-background"></div>
+
+    <div class="hero-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="inspiration-person">
+
+            <div class="portrait-ring">
+
+                <img
+                    src="{% static 'main/images/apj-kalam.webp' %}"
+                    alt="Dr. APJ Abdul Kalam"
+                    class="kalam-image"
+                >
+
+            </div>
+
+            <div class="floating-icon graduation">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+
+            <div class="floating-icon bulb">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+
+            <div class="floating-icon books">
+                <i class="fas fa-book-open"></i>
+            </div>
+
+            <div class="person-caption">
+
+                <span class="small-quote">“</span>
+
+                <p>
+                    Great dreams inspire<br>
+                    great actions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+
+        <div class="inspiration-content">
+
+            <span class="section-label">
+                <i class="fas fa-star"></i>
+                INSPIRATION FOR EVERY LEARNER
+            </span>
+
+            <h1>
+                Dream Big.<br>
+                <span>Learn More.</span><br>
+                Achieve More.
+            </h1>
+
+            <div class="quote-card">
+
+                <span class="quote-open">“</span>
+
+                <blockquote>
+                    Learning gives you the power to imagine,
+                    the courage to create, and the confidence
+                    to grow.
+                </blockquote>
+
+                <div class="quote-author">
+
+                    <span class="yellow-line"></span>
+
+                    <p>Inspirational Thought</p>
+
+                </div>
+
+                <span class="quote-close">”</span>
+
+            </div>
+
+            <p class="hero-description">
+                At CSC Computer Software College, we believe every
+                student has the potential to achieve something great.
+                Learn new skills, discover your strengths, and build
+                a future you can be proud of.
+            </p>
+
+            <a href="{% url 'courses' %}" class="hero-button">
+                Explore Our Courses
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEATURE CARDS -->
+
+<section class="feature-section">
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fas fa-users"></i>
+            </div>
+
+            <div>
+                <h3>Practical Learning</h3>
+                <p>Learn by doing</p>
+            </div>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+
+            <div>
+                <h3>Career Support</h3>
+                <p>Prepare with confidence</p>
+            </div>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+
+            <div>
+                <h3>Industry-Relevant</h3>
+                <p>Skills and knowledge</p>
+            </div>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+
+            <div>
+                <h3>Continuous Growth</h3>
+                <p>Learn · Build · Grow</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- INSPIRATIONAL MESSAGE -->
+
+<section class="message-section">
+
+    <div class="message-heading">
+
+        <span class="section-label">
+            YOUR JOURNEY STARTS HERE
+        </span>
+
+        <h2>Every Expert Was Once a Beginner</h2>
+
+        <p>
+            Success begins with curiosity, grows through practice,
+            and becomes reality through determination.
+        </p>
+
+    </div>
+
+
+    <div class="message-grid">
+
+        <!-- CARD 1 -->
+
+        <div class="message-card">
+
+            <div class="message-card-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+
+            <h3>Think Creatively</h3>
+
+            <p>
+                Ask questions, explore new ideas, and find creative
+                solutions to everyday challenges.
+            </p>
+
+        </div>
+
+
+        <!-- CARD 2 -->
+
+        <div class="message-card">
+
+            <div class="message-card-icon">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+
+            <h3>Build Your Skills</h3>
+
+            <p>
+                Develop practical technical skills through
+                continuous learning and hands-on experience.
+            </p>
+
+        </div>
+
+
+        <!-- CARD 3 -->
+
+        <div class="message-card">
+
+            <div class="message-card-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+
+            <h3>Reach Your Goals</h3>
+
+            <p>
+                Turn your knowledge into action and take confident
+                steps towards your career goals.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FINAL CTA -->
+
+<section class="inspiration-cta">
+
+    <div>
+
+        <span>YOUR FUTURE STARTS TODAY</span>
+
+        <h2>Believe in Yourself. Build Your Future.</h2>
+
+        <p>
+            Take the first step towards learning, growing,
+            and achieving your dreams.
+        </p>
+
+    </div>
+
+    <a href="{% url 'courses' %}">
+        Start Learning
+        <i class="fas fa-arrow-right"></i>
+    </a>
+
+</section>
+
+
+
+<!-- BACK TO TOP BUTTON -->
+
+<button id="backToTop" aria-label="Back to top">
+
+    <i class="fas fa-chevron-up"></i>
+
+</button>
+
+
+<!-- BACK TO TOP JAVASCRIPT -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const backToTop = document.getElementById("backToTop");
+
+    if (!backToTop) {
+        return;
+    }
+
+    window.addEventListener("scroll", function () {
+
+        backToTop.classList.toggle(
+            "show",
+            window.scrollY > 300
+        );
+
+    });
+
+    backToTop.addEventListener("click", function () {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+});
+</script>
+
+
+{% endblock %}
