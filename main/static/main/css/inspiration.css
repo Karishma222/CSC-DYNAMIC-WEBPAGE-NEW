@@ -58,7 +58,7 @@
 .inspiration-hero {
     position: relative;
     width: 100%;
-    min-height: 620px;
+    min-height: 480px;
     overflow: hidden;
     isolation: isolate;
     color: var(--white);
@@ -142,16 +142,16 @@
 
     width: 100%;
     max-width: 1250px;
-    min-height: 620px;
+    min-height: 420px;
 
     margin: 0 auto;
-    padding: 55px 30px 100px;
+    padding: 25px 30px 60px;
 
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 
     align-items: center;
-    gap: 75px;
+    gap: 40px;
 }
 
 .inspiration-hero .inspiration-person,
@@ -168,7 +168,7 @@
     position: relative;
 
     width: 100%;
-    max-width: 450px;
+    max-width: 340px;
 
     margin: 0 auto;
 
@@ -180,8 +180,8 @@
 .inspiration-hero .portrait-ring {
     position: relative;
 
-    width: 390px;
-    height: 390px;
+    width: 320px;
+    height: 320px;
     max-width: 100%;
 
     border: 5px solid white;
@@ -220,8 +220,8 @@
     position: absolute;
     z-index: 3;
 
-    width: 65px;
-    height: 65px;
+    width: 52px;
+    height: 52px;
 
     display: flex;
     align-items: center;
@@ -231,7 +231,7 @@
     color: var(--navy);
 
     border-radius: 17px;
-    font-size: 26px;
+    font-size: 21px;
 
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 
@@ -283,9 +283,9 @@
     left: -5px;
 
     width: max-content;
-    max-width: 250px;
+    max-width: 200px;
 
-    padding: 18px 20px;
+    padding: 12px 14px;
 
     background: rgba(26, 53, 109, 0.96);
 
@@ -297,7 +297,7 @@
 
 .inspiration-hero .person-caption p {
     color: #ffffff;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.5;
 }
 
@@ -334,11 +334,11 @@
 }
 
 .inspiration-hero .inspiration-content h1 {
-    margin: 20px 0 27px;
+    margin: 10px 0 14px;
 
     color: white;
 
-    font-size: clamp(34px, 4.3vw, 57px);
+    font-size: clamp(26px, 3vw, 40px);
     font-weight: 800;
     line-height: 1.16;
     letter-spacing: -1px;
@@ -356,7 +356,7 @@
 .inspiration-hero .quote-card {
     position: relative;
 
-    padding: 35px 38px 30px;
+    padding: 24px 28px 20px;
 
     border: 2px solid rgba(103, 142, 239, 0.65);
     border-radius: 22px;
@@ -378,7 +378,7 @@
 
     color: var(--yellow);
 
-    font-size: 85px;
+    font-size: 60px;
     font-weight: 800;
     line-height: 1;
 }
@@ -389,14 +389,14 @@
 }
 
 .inspiration-hero .quote-close {
-    bottom: -45px;
+    bottom: -32px;
     right: 25px;
 }
 
 .inspiration-hero .quote-card blockquote {
     color: #ffffff;
 
-    font-size: clamp(20px, 2.1vw, 29px);
+    font-size: clamp(16px, 1.6vw, 22px);
     line-height: 1.5;
     font-weight: 500;
 }
@@ -434,12 +434,12 @@
 .inspiration-hero .hero-description {
     max-width: 600px;
 
-    margin-top: 28px;
+    margin-top: 14px;
 
     color: #d5def3;
 
-    font-size: 14px;
-    line-height: 1.9;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .inspiration-hero .hero-button {
@@ -448,8 +448,8 @@
     justify-content: center;
     gap: 12px;
 
-    margin-top: 25px;
-    padding: 14px 23px;
+    margin-top: 14px;
+    padding: 11px 18px;
 
     color: var(--navy);
     background: var(--yellow);

@@ -1155,7 +1155,7 @@ body {
 footer.site-footer {
   background: linear-gradient(135deg, #0a1040 0%, #0d1545 100%);
   color: #ccd4ff;
-  padding: 0;
+  padding-top: 40px;
 }
 
 .footer-container {
