@@ -2,11 +2,6 @@ from django.db import models
 import random
 import string
 
-
-# =========================================================
-# DEMO REQUEST
-# =========================================================
-
 class DemoRequest(models.Model):
     name = models.CharField(max_length=120)
     mobile = models.CharField(max_length=20)
@@ -16,11 +11,6 @@ class DemoRequest(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.mobile}"
-
-
-# =========================================================
-# REVIEWS
-# =========================================================
 
 class Review(models.Model):
     name = models.CharField(max_length=100)
@@ -33,11 +23,6 @@ class Review(models.Model):
     def __str__(self):
         return f"Review by {self.name}"
 
-
-# =========================================================
-# ACHIEVEMENTS
-# =========================================================
-
 class Achievement(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
@@ -47,11 +32,6 @@ class Achievement(models.Model):
     def __str__(self):
         return self.title
 
-
-# =========================================================
-# WORKSHOPS
-# =========================================================
-
 class Workshop(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
     image = models.ImageField(upload_to="workshops/")
@@ -59,11 +39,6 @@ class Workshop(models.Model):
 
     def __str__(self):
         return self.title or f"Workshop {self.pk}"
-
-
-# =========================================================
-# CONTACT MESSAGES
-# =========================================================
 
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
@@ -75,11 +50,6 @@ class ContactMessage(models.Model):
     def __str__(self):
         return f"{self.name} — {self.email}"
 
-
-# =========================================================
-# COURSES - GENERAL COURSE DISPLAY
-# =========================================================
-
 class Course(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to="courses/")
@@ -87,11 +57,6 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
-
-
-# =========================================================
-# CAREERS
-# =========================================================
 
 class Career(models.Model):
 
@@ -123,11 +88,6 @@ class Career(models.Model):
     class Meta:
         ordering = ["-posted_on"]
 
-
-# =========================================================
-# JOB APPLICATIONS
-# =========================================================
-
 class JobApplication(models.Model):
     career = models.ForeignKey(
         Career, on_delete=models.CASCADE, related_name="applications"
@@ -146,11 +106,6 @@ class JobApplication(models.Model):
 
     class Meta:
         ordering = ["-applied_on"]
-
-
-# =========================================================
-# BOOK COURSE - COURSE DETAILS AND ROADMAP
-# =========================================================
 
 class BookCourse(models.Model):
 
@@ -213,11 +168,6 @@ class BookCourse(models.Model):
     class Meta:
         ordering = ["name"]
 
-
-# =========================================================
-# COURSE BOOKINGS AND PAYMENT VERIFICATION
-# =========================================================
-
 class CourseBooking(models.Model):
 
     PAYMENT_STATUS_CHOICES = [
@@ -256,11 +206,6 @@ class CourseBooking(models.Model):
     class Meta:
         ordering = ["-booked_on"]
 
-
-# =========================================================
-# SAT BOOKING (Added from RP)
-# =========================================================
-
 class SatBooking(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=150)
@@ -275,11 +220,6 @@ class SatBooking(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.mobile}"
-
-
-# =========================================================
-# PLACEMENT
-# =========================================================
 
 class PlacementStep(models.Model):
     order = models.PositiveSmallIntegerField(default=1)
@@ -306,11 +246,6 @@ class PlacementService(models.Model):
 
     class Meta:
         ordering = ["order"]
-
-
-# =========================================================
-# UPCOMING WORKSHOPS
-# =========================================================
 
 class UpcomingWorkshop(models.Model):
     MODE_CHOICES = [

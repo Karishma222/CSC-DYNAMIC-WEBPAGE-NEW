@@ -1,6 +1,8 @@
+import re
+
 from django import forms
 from .models import (
-    DemoRequest, ContactMessage, JobApplication, 
+    DemoRequest, ContactMessage, JobApplication,
     CourseBooking, WorkshopRegistration, SatBooking
 )
 
@@ -16,6 +18,57 @@ TN_DISTRICTS = [
     "Tiruppur", "Tiruvannamalai", "Vellore", "Viluppuram", "Virudhunagar",
 ]
 
+# Allowed email endings (add more if needed)
+ALLOWED_EMAIL_TLDS = (
+    ".com", ".in", ".co.in", ".org", ".net", ".edu",
+    ".edu.in", ".ac.in", ".org.in", ".net.in", ".gov.in",
+    ".info", ".co", ".io", ".me",
+)
+
+
+# =========================================================
+# SHARED VALIDATORS (used by SAT, Course Booking, Workshop)
+# =========================================================
+
+def validate_person_name(value):
+    name = " ".join(value.split())
+    if len(name) < 3:
+        raise forms.ValidationError("Name must be at least 3 characters.")
+    if len(name) > 40:
+        raise forms.ValidationError("Name must be 40 characters or less.")
+    if not re.fullmatch(r"[A-Za-z .]+", name):
+        raise forms.ValidationError("Name can have only letters, spaces and dots.")
+    return name
+
+
+def validate_indian_mobile(value):
+    mobile = value.strip().replace(" ", "").replace("-", "")
+    if mobile.startswith("+91"):
+        mobile = mobile[3:]
+    if not re.fullmatch(r"[6-9]\d{9}", mobile):
+        raise forms.ValidationError("Enter a valid 10-digit Indian mobile number.")
+    return mobile
+
+
+def validate_email_address(value):
+    email = value.strip().lower()
+
+    if not re.fullmatch(r"[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)+", email):
+        raise forms.ValidationError("Enter a valid email address.")
+
+    if ".." in email or email.startswith(".") or email.split("@")[0].endswith("."):
+        raise forms.ValidationError("Enter a valid email address.")
+
+    if not email.endswith(ALLOWED_EMAIL_TLDS):
+        raise forms.ValidationError(
+            "Please use a valid email ending like .com, .in, .org or .edu."
+        )
+    return email
+
+
+# =========================================================
+# FORMS
+# =========================================================
 
 class DemoForm(forms.ModelForm):
     class Meta:
@@ -113,25 +166,37 @@ class CourseBookingForm(forms.ModelForm):
         widget=forms.TextInput(attrs={
             'placeholder': 'Your Full Name',
             'class': 'b-input',
+            'data-validate': 'name',
         })
     )
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={
             'placeholder': 'Your Email Address',
             'class': 'b-input',
+            'data-validate': 'email',
         })
     )
     mobile = forms.CharField(
-        max_length=15,
         widget=forms.TextInput(attrs={
-            'placeholder': '+91 XXXXX XXXXX',
+            'placeholder': '10-digit mobile number',
             'class': 'b-input',
+            'data-validate': 'mobile',
+            'inputmode': 'numeric',
         })
     )
 
     class Meta:
         model = CourseBooking
         fields = ['student_name', 'email', 'mobile']
+
+    def clean_student_name(self):
+        return validate_person_name(self.cleaned_data['student_name'])
+
+    def clean_mobile(self):
+        return validate_indian_mobile(self.cleaned_data['mobile'])
+
+    def clean_email(self):
+        return validate_email_address(self.cleaned_data['email'])
 
 
 class PaymentSubmissionForm(forms.ModelForm):
@@ -160,10 +225,29 @@ class WorkshopRegistrationForm(forms.ModelForm):
         model = WorkshopRegistration
         fields = ['name', 'email', 'mobile']
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Your full name'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'you@example.com'}),
-            'mobile': forms.TextInput(attrs={'placeholder': '10-digit mobile number'}),
+            'name': forms.TextInput(attrs={
+                'placeholder': 'Your full name',
+                'data-validate': 'name',
+            }),
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'you@example.com',
+                'data-validate': 'email',
+            }),
+            'mobile': forms.TextInput(attrs={
+                'placeholder': '10-digit mobile number',
+                'data-validate': 'mobile',
+                'inputmode': 'numeric',
+            }),
         }
+
+    def clean_name(self):
+        return validate_person_name(self.cleaned_data['name'])
+
+    def clean_mobile(self):
+        return validate_indian_mobile(self.cleaned_data['mobile'])
+
+    def clean_email(self):
+        return validate_email_address(self.cleaned_data['email'])
 
 
 class SatBookingForm(forms.ModelForm):
@@ -181,3 +265,12 @@ class SatBookingForm(forms.ModelForm):
             'name', 'address', 'gender', 'qualification',
             'district', 'area', 'timing', 'mobile', 'email'
         ]
+
+    def clean_name(self):
+        return validate_person_name(self.cleaned_data['name'])
+
+    def clean_mobile(self):
+        return validate_indian_mobile(self.cleaned_data['mobile'])
+
+    def clean_email(self):
+        return validate_email_address(self.cleaned_data['email'])

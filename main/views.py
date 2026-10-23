@@ -171,10 +171,11 @@ AP-814, "G" Block, 1st Street, Anna Nagar, Chennai
 
 def workshop_view(request):
     workshop = Workshop.objects.order_by('-created_at')
+
     upcoming = UpcomingWorkshop.objects.filter(
-        is_active=True,
-        date__gte=timezone.localdate()
-    )
+        is_active=True
+    ).order_by('date', 'start_time')
+
     return render(request, 'main/workshop.html', {
         'workshop': workshop,
         'upcoming': upcoming,
