@@ -3,6 +3,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'main/css/booking_success.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 {% endblock %}
 
 {% block content %}
@@ -19,7 +20,9 @@
     <div class="success-card">
 
         <!-- Success icon -->
-        <div class="success-icon">✅</div>
+        <div class="success-icon">
+            <i><i class="fa-solid fa-circle-check"></i></i>
+        </div>
 
         <!-- Heading -->
         <h1>Thank You for Booking!</h1>
@@ -31,7 +34,7 @@
         <!-- Booking details table -->
         <div class="booking-details">
             <div class="bd-header">
-                <span>📋 Booking Summary</span>
+                <span><i><i class="fa-solid fa-list-check"></i></i> Booking Summary</span>
                 <span class="bd-ref">Ref: {{ booking.booking_ref }}</span>
             </div>
 
@@ -71,7 +74,7 @@
 
         <!-- QR Code section -->
         <div class="qr-section">
-            <h3>💳 Complete Your Payment</h3>
+            <h3><i><i class="fa-solid fa-credit-card"></i></i> Complete Your Payment</h3>
             <p>Scan the QR code below to pay <strong>₹{{ booking.course.offer_fee|floatformat:0 }}</strong></p>
 
             <div class="qr-box">
@@ -82,26 +85,26 @@
 
             <div class="payment-info">
                 <div class="pi-row">
-                    <span>📱 UPI / GPay / PhonePe / Paytm</span>
+                    <span><i><i class="fa-solid fa-mobile-screen-button"></i></i> UPI / GPay / PhonePe / Paytm</span>
                 </div>
                 <div class="pi-row">
-                    <span>💰 Amount: <strong>₹{{ booking.course.offer_fee|floatformat:0 }}</strong></span>
+                    <span><i><i class="fa-solid fa-coins"></i></i> Amount: <strong>₹{{ booking.course.offer_fee|floatformat:0 }}</strong></span>
                 </div>
             </div>
         </div>
 
         <!-- Important notice -->
         <div class="notice-box">
-            <div class="notice-title">⚠️ Screenshot is Mandatory for Registration</div>
+            <div class="notice-title"><i><i class="fa-solid fa-triangle-exclamation"></i></i> Screenshot is Mandatory for Registration</div>
             <p>After payment, send your payment screenshot to confirm your seat:</p>
             <div class="contact-options">
                 <a href="https://wa.me/919940909056?text=Hi%20CSC%20Anna%20Nagar%2C%20I%20have%20completed%20payment%20for%20{{ booking.course.name|urlencode }}%20(Ref:%20{{ booking.booking_ref }})"
                    class="contact-btn whatsapp" target="_blank">
-                    📱 Send on WhatsApp
+                    <i><i class="fa-solid fa-mobile-screen-button"></i></i> Send on WhatsApp
                 </a>
                 <a href="mailto:annanagarcsc2024@gmail.com?subject=Payment Screenshot — {{ booking.booking_ref }}&body=Hi CSC Anna Nagar, I have completed payment for {{ booking.course.name }} (Ref: {{ booking.booking_ref }}). Please find my payment screenshot attached."
                    class="contact-btn email">
-                    ✉️ Send via Email
+                    <i><i class="fa-solid fa-paper-plane"></i></i> Send via Email
                 </a>
             </div>
             <p class="notice-small">
@@ -112,7 +115,7 @@
 
         <!-- Confirmation email note -->
         <div class="email-note">
-            📧 A confirmation email has been sent to <strong>{{ booking.email }}</strong>
+            <i><i class="fa-solid fa-paper-plane"></i></i> A confirmation email has been sent to <strong>{{ booking.email }}</strong>
         </div>
 
         <!-- Back to home -->

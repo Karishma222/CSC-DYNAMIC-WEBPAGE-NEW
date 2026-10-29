@@ -5,6 +5,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'main/css/placement.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
 {% endblock %}
 
 {% block content %}
@@ -120,15 +121,15 @@
 
     <div class="pl-map">
       <div class="pl-student">
-        <span class="pl-student__ico">&#128100;</span>
+        <span class="pl-student__ico"><i><i class="fa-solid fa-user-graduate"></i></i></span>
         <b>Student</b>
       </div>
       <span class="pl-map__arrow">&rarr;</span>
       <ul class="pl-nodes">
-        <li><span>&#128202;</span>Skills</li>
-        <li><span>&#128196;</span>Resume</li>
-        <li><span>&#128172;</span>Interview</li>
-        <li class="pl-nodes__end"><span>&#127970;</span>Workplace</li>
+        <li><span><i><i class="fa-solid fa-chart-simple"></i></i></span>Skills</li>
+        <li><span><i><i class="fa-regular fa-newspaper"></i></i></span>Resume</li>
+        <li><span><i><i class="fa-solid fa-calendar-days"></i></i></span>Interview</li>
+        <li class="pl-nodes__end"><span><i><i class="fa-solid fa-desktop"></i></i></span>Workplace</li>
       </ul>
     </div>
   </div>
